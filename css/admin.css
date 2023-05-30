@@ -34,17 +34,22 @@ h1,h2,h3,p{
     justify-content: center;
     background-color: var(--amarillo);
     padding:1.5rem 3rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
 }
 
 .letra-azul{
     font-weight: bold;
+    font-size: 2.8rem;
     color: var(--azul);
 }
 
 /* Código para el main */
 
 .main{
-    margin-top: 12.5rem;
+    margin-top: 10rem;
     display: flex;
     flex-direction: column;
     row-gap: 2.5rem;
