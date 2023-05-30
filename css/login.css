@@ -119,6 +119,15 @@ h1,h2,h3,p{
     align-items: center;
 }
 
+.registro{
+    display: flex;
+    justify-content: center;
+}
+
+.registro a{
+    text-decoration: underline;
+}
+
 /* Footer */
 
 .footer{
