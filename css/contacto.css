@@ -19,6 +19,7 @@ body {
 
 a{
     text-decoration: none;
+    color: black;
 }
 
 h1,h2,h3,p{
@@ -37,7 +38,14 @@ h1,h2,h3,p{
 
 .navegacion{
     display: flex;
-    column-gap: 2rem;
+    align-items: center;
+    column-gap: 5rem;
+}
+
+.block{
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
 }
 
 .header{
@@ -55,6 +63,14 @@ h1,h2,h3,p{
 .letra-azul{
     font-weight: bold;
     color: var(--azul);
+}
+
+.icon-block{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 0.5rem;
 }
 
 /* Main */
