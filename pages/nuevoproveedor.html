@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo Producto</title>
+    <title>Nuevo Proveedor</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/nuevoproducto.css">
+    <link rel="stylesheet" href="../css/nuevoproveedor.css">
 </head>
 <body>
     <header class="header">
@@ -23,10 +23,10 @@
                 <path d="M5 12l6 6" />
                 <path d="M5 12l6 -6" />
             </svg>
-            <img src="../img/productos.jpg" alt="Nuevo producto">
+            <img src="../img/proveedores.jpg" alt="Nuevo proveedor">
         </div>
         <div class="contenedor-derecha">
-            <h2>REGISTRO DE UN PRODUCTO</h2>
+            <h2>REGISTRO DE UN PROVEEDOR</h2>
             <form class="formulario">
                 <div class="bloque1-formulario">
                     <div class="contenedor-campos">
@@ -34,28 +34,36 @@
                         <input type="text" placeholder="Ingrese el nombre" required>
                     </div>
                     <div class="contenedor-campos">
-                        <label for="precio">PRECIO DE VENTA:</label>
-                        <input type="number" placeholder="Ingrese el precio de venta" required>
+                        <label for="apellido">APELLIDO:</label>
+                        <input type="text" placeholder="Ingrese el apellido" required>
                     </div>
                     <div class="contenedor-campos">
-                        <label for="descripcion">DESCRIPCIÓN:</label>
-                        <input type="text" placeholder="Ingrese la descripcion" required>
+                        <label for="nombre">RUC:</label>
+                        <input type="text" placeholder="Ingrese el ruc" maxlength="11" required>
                     </div>
                     <div class="contenedor-campos">
-                        <label for="stock">STOCK:</label>
-                        <input type="number" placeholder="Ingrese el stock" required>
+                        <label for="email">EMAIL:</label>
+                        <input type="email" placeholder="Ingrese el email" required>
                     </div>
                     <div class="contenedor-campos">
-                        <label for="precio2">PRECIO DE COMPRA:</label>
-                        <input type="number" placeholder="Ingrese el precio de compra" required>
+                        <label for="calle">CALLE:</label>
+                        <input type="text" placeholder="Ingrese la calle" required>
+                    </div>
+                    <div class="contenedor-campos">
+                        <label for="numero">NÚMERO:</label>
+                        <input type="number" placeholder="Ingrese el número de calle" required>
+                    </div>
+                    <div class="contenedor-campos">
+                        <label for="ciudad">CIUDAD:</label>
+                        <input type="text" placeholder="Ingrese la ciudad" required>
                     </div>
 
-                    <button>GUARDAR PRODUCTO</button>
+                    <button>GUARDAR PROVEEDOR</button>
                 </div>
 
                 <div class="bloque2-formulario">
                     <label>FOTO:</label>
-                    <img src="../img/productos.jpg" alt="Foto de producto">
+                    <img src="../img/proveedores.jpg" alt="Foto de proveedor">
                     <input type="file">
                 </div>
             </form>
