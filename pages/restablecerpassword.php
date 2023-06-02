@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo Password</title>
+    <title>Código - Restablecer Contraseña</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/nuevopassword.css">
+    <link rel="stylesheet" href="../css/restablecerpassword.css">
 </head>
 <body>
     <header class="header">
@@ -21,11 +21,11 @@
         <nav class="navegacion">
             <div class="block">
                 <a href="" class="letra-azul">Catálogo</a>
-                <a href="./contacto.html" class="letra-azul">Contáctanos</a>
-                <a href="./nosotros.html" class="letra-azul">Nosotros</a>
+                <a href="./contacto.php" class="letra-azul">Contáctanos</a>
+                <a href="./nosotros.php" class="letra-azul">Nosotros</a>
             </div>
             <div class="block">
-                <a href="./login.html" class="letra-azul">
+                <a href="./login.php" class="letra-azul">
                     <span class="icon-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#25318C" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -52,20 +52,16 @@
     <div class="contenedor-main">
         <main class="main">
             <h2>Restablecer Contraseña</h2>
+            <p>Enviamos las instrucciones junto con un código
+                verificador al correo ******@gmail.com
+                Llegará en unos minutos. Revisa los pasos para poder
+                cambiar tu contraseña.</p>
             <form class="formulario">
                 <div class="contenedor-campos">
-                    <p>Correo Electrónico</p>
-                    <p>********@gmail.com</p>
+                    <label for="codigo">Código:</label>
+                    <input id="codigo" type="text" placeholder="Ingrese Código" required maxlength="6">
                 </div>
-                <div class="contenedor-campos">
-                    <label for="nuevopassword">Ingrese Nueva Contraseña:</label>
-                    <input id="nuevopassword" type="password" placeholder="Ingrese su nueva contraseña" required>
-                </div>
-                <div class="contenedor-campos">
-                    <label for="restablecerpassword">Repita la Contraseña</label>
-                    <input id="restablecerpassword" type="password" placeholder="Repita su nueva contraseña" required>
-                </div>
-                <button>Restablecer</button>
+                <button>Continuar</button>
             </form>
         </main>
     </div>
@@ -96,7 +92,7 @@
                 </a>
             </div>
             <div class="ayuda">
-                <a href="./ayuda.html">
+                <a href="./ayuda.php">
                     <span class="icon-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-help-octagon" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

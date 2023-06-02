@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contáctanos</title>
+    <title>Nosotros</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/contacto.css">
+    <link rel="stylesheet" href="../css/nosotros.css">
 </head>
 <body>
     <header class="header">
@@ -21,11 +21,11 @@
         <nav class="navegacion">
             <div class="block">
                 <a href="" class="letra-azul">Catálogo</a>
-                <a href="./contacto.html" class="letra-azul">Contáctanos</a>
-                <a href="./nosotros.html" class="letra-azul">Nosotros</a>
+                <a href="./contacto.php" class="letra-azul">Contáctanos</a>
+                <a href="./nosotros.php" class="letra-azul">Nosotros</a>
             </div>
             <div class="block">
-                <a href="./login.html" class="letra-azul">
+                <a href="./login.php" class="letra-azul">
                     <span class="icon-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#25318C" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -49,30 +49,31 @@
         </nav>
     </header>
 
-    <div class="contenedor-main">
-        <main class="main">
-            <form class="formulario">
-                <div class="contenedor-campos">
-                    <label for="nombre">Nombres:</label>
-                    <input type="text" placeholder="Escriba sus nombres" required>
-                </div>
-                <div class="contenedor-campos">
-                    <label for="apellidos">Apellidos:</label>
-                    <input type="text" placeholder="Escriba sus apellidos" required>
-                </div>
-                <div class="contenedor-campos">
-                    <label for="email">Correo Electrónico:</label>
-                    <input type="email" placeholder="Escriba su correo electrónico" required>
-                </div>
-                <div class="contenedor-campos">
-                    <label for="mensaje">Mensaje:</label>
-                    <textarea id="mensaje" placeholder="Escriba su mensaje" required></textarea>
-                </div>
-                <button>MÁNDAME UN CORREO</button>
-            </form>
+    <div class="contenedor-img">
+        <img class="img-portada" src="../img/portada.webp" alt="Imagen portada">
+    </div>
 
-            <img src="../img/imgformulario.jpg" alt="Imagen Mass">
-        </main>
+    <div class="contenedor-nosotros">
+        <section class="seccion-nosotros">
+            <p>
+                Nuestro propósito es ser la cadena con mayor cantidad de puntos de venta, para que todos los peruanos
+    encuentren los productos de primera necesidad cerca a su hogar y a los mejores precios.
+            </p>
+            <div>
+                <h2>MISIÓN:</h2>
+                <p>
+                    Ser un supermercado moderno y de calidad, donde el cliente elige en libertad y donde buscamos la satisfacción
+        continua de nuestros clientes a través de una atención y servicio que excede sus expectativas y una adaptación
+        continua a sus necesidades.
+                </p>
+            </div>
+            <div>
+                <h2>VISIÓN:</h2>
+                <p>
+                    Ser la tienda preferida por los consumidores para comprar.
+                </p>
+            </div>
+        </section>
     </div>
 
     <footer class="footer">
@@ -101,7 +102,7 @@
                 </a>
             </div>
             <div class="ayuda">
-                <a href="./ayuda.html">
+                <a href="./ayuda.php">
                     <span class="icon-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-help-octagon" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

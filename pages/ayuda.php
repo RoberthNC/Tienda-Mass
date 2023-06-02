@@ -21,11 +21,11 @@
         <nav class="navegacion">
             <div class="block">
                 <a href="" class="letra-azul">Catálogo</a>
-                <a href="./contacto.html" class="letra-azul">Contáctanos</a>
-                <a href="./nosotros.html" class="letra-azul">Nosotros</a>
+                <a href="./contacto.php" class="letra-azul">Contáctanos</a>
+                <a href="./nosotros.php" class="letra-azul">Nosotros</a>
             </div>
             <div class="block">
-                <a href="./login.html" class="letra-azul">
+                <a href="./login.php" class="letra-azul">
                     <span class="icon-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#25318C" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -101,7 +101,7 @@
                 </a>
             </div>
             <div class="ayuda">
-                <a href="./ayuda.html">
+                <a href="./ayuda.php">
                     <span class="icon-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-help-octagon" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
