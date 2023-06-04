@@ -1,3 +1,40 @@
+<?php
+
+    require "../config/conexion.php";
+    require "../config/debuguear.php";
+
+    $conn = conexionBD();
+
+    if($_SERVER["REQUEST_METHOD"]==="POST"){
+        $nombre = $_POST["nombre"];
+        $apellidos = $_POST["apellidos"];
+        $dni = $_POST["dni"];
+        $telefono = $_POST["telefono"];
+        $email = $_POST["email"];
+        $direccion_domicilio = $_POST["direccion_domicilio"];
+        $password = $_POST["password"];
+
+        //Registramos en la tabla de cliente
+        $query = "INSERT INTO cliente(nombre,apellido,dni,telefono,email,direccion_domicilio,password)VALUES('$nombre','$apellidos','$dni','$telefono','$email','$direccion_domicilio','$password')";
+        $resultado = mysqli_query($conn,$query);
+
+        //Obtenemos el id del cliente que se acaba de registrar
+        $query2 = "SELECT * FROM cliente WHERE email='$email' AND password='$password'";
+        $resultado2 = mysqli_query($conn,$query2);
+        $datos = mysqli_fetch_assoc($resultado2);
+
+        $id_cliente = $datos["id_cliente"];
+
+        //Insertamos en la tabla de usuario
+        $query3 = "INSERT INTO usuario(usuario,constra,es_admin,id_cliente)VALUES('$email','$password',0,'$id_cliente')";
+        $resultado3 = mysqli_query($conn, $query3);
+
+        if($resultado){
+            header("Location: ./nosotros.php");
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,58 +89,48 @@
     <main class="main">
         <div class="contenedor-formulario">
             <h2>Registro de Usuario</h2>
-            <form class="formulario">
+            <form method="POST" class="formulario">
                 <div class="contenedor-campos">
                     <label for="nombre">Nombre:</label>
-                    <input id="nombre" type="text" placeholder="Ingresa tu nombre" required>
+                    <input id="nombre" name="nombre" type="text" placeholder="Ingresa tu nombre" required>
                 </div>
 
                 <div class="contenedor-campos">
                     <label for="apellidos">Apellidos:</label>
-                    <input id="apellidos" type="text" placeholder="Ingresa tus apellidos" required>
+                    <input id="apellidos" name="apellidos" type="text" placeholder="Ingresa tus apellidos" required>
                 </div>
 
                 <div class="contenedor-campos">
                     <label for="dni">DNI:</label>
-                    <input id="dni" type="text" placeholder="Ingresa tu DNI" required maxlength="8">
+                    <input id="dni" name="dni" type="text" placeholder="Ingresa tu DNI" required maxlength="8">
                 </div>
 
                 <div class="contenedor-campos">
                     <label for="telefono">Teléfono:</label>
-                    <input id="telefono" type="tel" placeholder="Ingresa tu teléfono" required maxlength="9">
+                    <input id="telefono" name="telefono" type="tel" placeholder="Ingresa tu teléfono" required maxlength="9">
                 </div>
 
                 <div class="contenedor-campos">
-                    <label for="correo">Correo:</label>
-                    <input id="correo" type="email" placeholder="Ingresa tu correo electrónico" required>
+                    <label for="direccion_domicilio">DIRECCIÓN DE DOMICILIO:</label>
+                    <input id="direccion_domicilio" name="direccion_domicilio" type="text" placeholder="Ingresa tu dirección" required>
                 </div>
 
                 <div class="contenedor-campos">
-                    <label for="calle">Calle:</label>
-                    <input id="calle" type="text" placeholder="Ingresa la calle de tu localidad" required>
-                </div>
-
-                <div class="contenedor-campos">
-                    <label for="numero_calle">Número:</label>
-                    <input id="numero_calle" type="number" placeholder="Ingresa el número de tu calle" required>
-                </div>
-
-                <div class="contenedor-campos">
-                    <label for="ciudad">Ciudad:</label>
-                    <input id="ciudad" type="text" placeholder="Ingresa la ciudad de tu localidad" required>
+                    <label for="email">Email:</label>
+                    <input id="email" name="email" type="email" placeholder="Ingresa tu correo electrónico" required>
                 </div>
 
                 <div class="contenedor-campos">
                     <label for="password">Contraseña:</label>
-                    <input id="password" type="password" placeholder="Ingresa una contraseña" required>
+                    <input id="password" name="password" type="password" placeholder="Ingresa una contraseña" required>
                 </div>
 
                 <div class="contenedor-checkbox">
-                    <input type="checkbox">
+                    <input type="checkbox" required>
                     <label for="terminos">Acepto los términos y condiciones</label>
                 </div>
 
-                <button>Registrarme</button>
+                <input type="submit" value="Registrarme" />
             </form>
         </div>
         <div class="contenedor-detalles">
