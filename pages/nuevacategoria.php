@@ -27,11 +27,11 @@
         </div>
         <div class="contenedor-derecha">
             <h2>AGREGAR UNA CATEGORIA</h2>
-            <form class="formulario">
+            <form method="POST" class="formulario">
                 <div class="bloque1-formulario">
                     <div class="contenedor-campos">
                         <label for="nombre">NOMBRE:</label>
-                        <input type="text" placeholder="Ingrese el nombre" required>
+                        <input type="text" name="nombre" placeholder="Ingrese el nombre" required>
                     </div>
 
                     <button>AGREGAR CATEGORIA</button>
@@ -40,10 +40,29 @@
                 <div class="bloque2-formulario">
                     <label>FOTO:</label>
                     <img src="../img/categorias.png" alt="Foto de categoria">
-                    <input type="file">
                 </div>
             </form>
         </div>
     </main>
 </body>
 </html>
+
+<?php
+
+    require "../config/conexion.php";
+    require "../config/debuguear.php";
+
+    $conn = conexionBD();
+
+    if($_SERVER["REQUEST_METHOD"]==="POST"){
+        $nombre = $_POST["nombre"];
+
+        $query = "INSERT INTO categoria(nombre)VALUES('$nombre')";
+        $resultado = mysqli_query($conn,$query);
+
+        if($resultado){
+            header("Location: ./admin.php");
+        }
+    }
+
+?>

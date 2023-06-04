@@ -27,47 +27,68 @@
         </div>
         <div class="contenedor-derecha">
             <h2>REGISTRO DE UN PROVEEDOR</h2>
-            <form class="formulario">
+            <form method="POST" class="formulario">
                 <div class="bloque1-formulario">
                     <div class="contenedor-campos">
                         <label for="nombre">NOMBRE:</label>
-                        <input type="text" placeholder="Ingrese el nombre" required>
+                        <input type="text" name="nombre" placeholder="Ingrese el nombre" required>
                     </div>
                     <div class="contenedor-campos">
                         <label for="apellido">APELLIDO:</label>
-                        <input type="text" placeholder="Ingrese el apellido" required>
+                        <input type="text" name="apellido" placeholder="Ingrese el apellido" required>
                     </div>
                     <div class="contenedor-campos">
-                        <label for="nombre">RUC:</label>
-                        <input type="text" placeholder="Ingrese el ruc" maxlength="11" required>
+                        <label for="ruc">RUC:</label>
+                        <input type="text" name="ruc" placeholder="Ingrese el ruc" maxlength="11" required>
+                    </div>
+                    <div class="contenedor-campos">
+                        <label for="telefono">TELEFONO:</label>
+                        <input type="tel" name="telefono" placeholder="Ingrese el telefono" maxlength="9" required>
                     </div>
                     <div class="contenedor-campos">
                         <label for="email">EMAIL:</label>
-                        <input type="email" placeholder="Ingrese el email" required>
+                        <input type="email" name="email" placeholder="Ingrese el email" required>
                     </div>
                     <div class="contenedor-campos">
-                        <label for="calle">CALLE:</label>
-                        <input type="text" placeholder="Ingrese la calle" required>
-                    </div>
-                    <div class="contenedor-campos">
-                        <label for="numero">NÚMERO:</label>
-                        <input type="number" placeholder="Ingrese el número de calle" required>
-                    </div>
-                    <div class="contenedor-campos">
-                        <label for="ciudad">CIUDAD:</label>
-                        <input type="text" placeholder="Ingrese la ciudad" required>
+                        <label for="direccion">DIRECCION:</label>
+                        <input type="text" name="direccion_domicilio" placeholder="Ingrese la direccion" required>
                     </div>
 
-                    <button>GUARDAR PROVEEDOR</button>
+                    <input type="submit" value="GUARDAR PROVEEDOR">
                 </div>
 
                 <div class="bloque2-formulario">
                     <label>FOTO:</label>
                     <img src="../img/proveedores.jpg" alt="Foto de proveedor">
-                    <input type="file">
                 </div>
             </form>
         </div>
     </main>
 </body>
 </html>
+
+<?php
+
+require "../config/conexion.php";
+require "../config/debuguear.php";
+
+$conn = conexionBD();
+
+if($_SERVER["REQUEST_METHOD"]==="POST"){
+    $nombre = $_POST["nombre"];
+    $apellido = $_POST["apellido"];
+    $ruc = $_POST["ruc"];
+    $telefono = $_POST["telefono"];
+    $email = $_POST["email"];
+    $direccion_domicilio = $_POST["direccion_domicilio"];
+
+    //Consulta para insertar
+    $query = "INSERT INTO proveedor(nombre,apellido,ruc,telefono,email,direccion_domicilio) VALUES('$nombre','$apellido','$ruc','$telefono','$email','$direccion_domicilio')";
+    $resultado = mysqli_query($conn,$query);
+
+    if($resultado){
+        header("Location: ./admin.php");
+    }
+}
+
+?>

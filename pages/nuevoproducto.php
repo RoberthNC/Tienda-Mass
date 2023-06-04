@@ -27,39 +27,79 @@
         </div>
         <div class="contenedor-derecha">
             <h2>REGISTRO DE UN PRODUCTO</h2>
-            <form class="formulario">
+            <form method="POST" class="formulario" enctype="multipart/form-data">
                 <div class="bloque1-formulario">
                     <div class="contenedor-campos">
                         <label for="nombre">NOMBRE:</label>
-                        <input type="text" placeholder="Ingrese el nombre" required>
+                        <input type="text" name="nombre" placeholder="Ingrese el nombre" required>
                     </div>
                     <div class="contenedor-campos">
                         <label for="precio">PRECIO DE VENTA:</label>
-                        <input type="number" placeholder="Ingrese el precio de venta" required>
+                        <input type="number" name="precio_venta" placeholder="Ingrese el precio de venta" required>
                     </div>
                     <div class="contenedor-campos">
                         <label for="descripcion">DESCRIPCIÓN:</label>
-                        <input type="text" placeholder="Ingrese la descripcion" required>
+                        <input type="text" name="descripcion_producto" placeholder="Ingrese la descripcion" required>
                     </div>
                     <div class="contenedor-campos">
                         <label for="stock">STOCK:</label>
-                        <input type="number" placeholder="Ingrese el stock" required>
+                        <input type="number" name="stock" placeholder="Ingrese el stock" required>
                     </div>
                     <div class="contenedor-campos">
                         <label for="precio2">PRECIO DE COMPRA:</label>
-                        <input type="number" placeholder="Ingrese el precio de compra" required>
+                        <input type="number" name="precio_compra" placeholder="Ingrese el precio de compra" required>
                     </div>
 
-                    <button>GUARDAR PRODUCTO</button>
+                    <input type="file" name="imagen" accept="image/jpeg, image/png">
+
+                    <input type="submit" value="GUARDAR PRODUCTO">
                 </div>
 
                 <div class="bloque2-formulario">
                     <label>FOTO:</label>
                     <img src="../img/productos.jpg" alt="Foto de producto">
-                    <input type="file">
                 </div>
             </form>
         </div>
     </main>
 </body>
 </html>
+
+<?php
+
+    require "../config/conexion.php";
+    require "../config/debuguear.php";
+
+    
+
+    $conn = conexionBD();
+
+    if($_SERVER["REQUEST_METHOD"]==="POST"){
+        $nombre = $_POST["nombre"];
+        $precio_venta = $_POST["precio_venta"];
+        $descripcion_producto = $_POST["descripcion_producto"];
+        $stock = $_POST["stock"];
+        $precio_compra = $_POST["precio_compra"];
+        $id_proveedor = 2;
+        $id_marca = 1;
+        $id_subcategoria = 1;
+        $imagen = $_FILES["imagen"];
+
+        $carpetaProductos = "../productos";
+
+        if(!is_dir($carpetaProductos)){
+            mkdir($carpetaProductos);
+        }
+
+        $nombreImagen = md5(uniqid(rand(),true)) . ".jpg";
+
+        move_uploaded_file($imagen["tmp_name"],$carpetaProductos . $nombreImagen);
+
+        $query = "INSERT INTO producto(nombre,precio_venta,descripcion_producto,stock,precio_compra,id_proveedor,id_marca,id_subcategoria,imagen)VALUES('$nombre','$precio_venta','$descripcion_producto','$stock','$precio_compra',$id_proveedor,$id_marca,$id_subcategoria,'$imagen')";
+        $resultado = mysqli_query($conn,$query);
+        if($resultado){
+            header("Location: ./admin.php");
+        }
+    }
+
+?>

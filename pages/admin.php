@@ -22,7 +22,7 @@
                 <h2>PRODUCTOS</h2>
                 <img src="../img/productos.jpg" alt="Metáfora de productos">
                 <div class="botones">
-                    <button>AGREGAR</button>
+                    <a href="./nuevoproducto.php">AGREGAR</a>
                     <button>MOSTRAR</button>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 <h2>PROVEEDORES</h2>
                 <img src="../img/proveedores.jpg" alt="Metáfora de proveedores">
                 <div class="botones">
-                    <button>AGREGAR</button>
+                    <a href="./nuevoproveedor.php">AGREGAR</a>
                     <button>MOSTRAR</button>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 <h2>CATEGORÍAS</h2>
                 <img src="../img/categorias.png" alt="Metáfora de categorías">
                 <div class="botones">
-                    <button>AGREGAR</button>
+                    <a href="./nuevacategoria.php">AGREGAR</a>
                     <button>MOSTRAR</button>
                 </div>
             </div>

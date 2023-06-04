@@ -82,7 +82,7 @@ h1,h2,h3,p{
     row-gap: 1rem;
 }
 
-.bloque1-formulario button{
+.bloque1-formulario input[type="submit"]{
     margin-top: 2rem;
     padding: 1rem;
     border-radius: 5px;
