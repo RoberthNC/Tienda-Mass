@@ -1,3 +1,41 @@
+<?php
+
+    session_start();
+
+    require "../config/conexion.php";
+    require "../config/debuguear.php";
+
+    $conn = conexionBD();
+
+    if($_SERVER["REQUEST_METHOD"]==="POST"){
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+
+        $query = "SELECT * FROM usuario WHERE usuario='$email' AND constra='$password'";
+        $resultado = mysqli_query($conn,$query);
+
+        if($resultado->num_rows > 0){
+
+            $datos = mysqli_fetch_assoc($resultado);
+            //Verificamos si es cliente
+            if($datos["es_admin"]==="0"){
+                $_SESSION["id"] = $datos["id_cliente"];
+                $id_temp = $_SESSION["id"];
+                //Obtenemos el nombre del cliente
+                $queryCliente = "SELECT * FROM cliente WHERE id_cliente='$id_temp'";
+                $resultadoCliente = mysqli_query($conn, $queryCliente);
+                $datosCliente = mysqli_fetch_assoc($resultadoCliente);
+                $_SESSION["nombre"] = $datosCliente["nombre"];
+                header("Location: ./index.php");
+            }
+            //En caso contrario verificamos si existe el usuario para que ingrese como admin
+            if($datos["es_admin"]==="1"){
+                header("Location: ./admin.php");
+            }
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +81,7 @@
                             <path d="M17 17h-11v-14h-2" />
                             <path d="M6 5l14 1l-1 7h-13" />
                         </svg>
+                        <p>Carrito</p>
                     </span>
                 </a>
             </div>
@@ -52,14 +91,14 @@
     <div class="contenedor-main">
         <main class="main">
             <h2>Inicia Sesión</h2>
-            <form class="formulario">
+            <form method="POST" class="formulario">
                 <div class="contenedor-campos">
-                    <label for="correo">Correo Electrónico:</label>
-                    <input id="correo" type="email" placeholder="Ingresa tu correo aquí" required>
+                    <label for="email">Correo Electrónico:</label>
+                    <input id="email" name="email" type="email" placeholder="Ingresa tu correo aquí" required>
                 </div>
                 <div class="contenedor-campos">
                     <label for="password">Contraseña:</label>
-                    <input id="password" type="password" placeholder="Ingresa tu contraseña aquí" required>
+                    <input id="password" name="password" type="password" placeholder="Ingresa tu contraseña aquí" required>
                 </div>
                 <div class="contenedor-checkbox">
                     <input type="checkbox">

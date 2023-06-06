@@ -1,3 +1,12 @@
+<?php
+
+    session_start();
+
+    $id = $_SESSION["id"];
+    $nombre = $_SESSION["nombre"];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +41,11 @@
                             <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
                             <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                         </svg>
+                        <p>
+                            <?php
+                                echo $nombre;
+                            ?>
+                        </p>
                     </span>
                 </a>
                 <a href="" class="letra-azul">
@@ -43,6 +57,7 @@
                             <path d="M17 17h-11v-14h-2" />
                             <path d="M6 5l14 1l-1 7h-13" />
                         </svg>
+                        <p>Carrito</p>
                     </span>
                 </a>
             </div>
