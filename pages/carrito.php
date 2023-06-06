@@ -2,52 +2,23 @@
 
     session_start();
 
-    require "../config/conexion.php";
-    require "../config/debuguear.php";
-
-    $conn = conexionBD();
-
-    if($_SERVER["REQUEST_METHOD"]==="POST"){
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-
-        $query = "SELECT * FROM usuario WHERE usuario='$email' AND constra='$password'";
-        $resultado = mysqli_query($conn,$query);
-
-        if($resultado->num_rows > 0){
-
-            $datos = mysqli_fetch_assoc($resultado);
-            //Verificamos si es cliente
-            if($datos["es_admin"]==="0"){
-                $_SESSION["id"] = $datos["id_cliente"];
-                $id_temp = $_SESSION["id"];
-                //Obtenemos el nombre del cliente
-                $queryCliente = "SELECT * FROM cliente WHERE id_cliente='$id_temp'";
-                $resultadoCliente = mysqli_query($conn, $queryCliente);
-                $datosCliente = mysqli_fetch_assoc($resultadoCliente);
-                $_SESSION["nombre"] = $datosCliente["nombre"];
-                header("Location: ./index.php");
-            }
-            //En caso contrario verificamos si existe el usuario para que ingrese como admin
-            if($datos["es_admin"]==="1"){
-                header("Location: ./admin.php");
-            }
-        }
-    }
+    $id = $_SESSION["id"];
+    $nombre = $_SESSION["nombre"];
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio Sesión</title>
+    <title>Carrito de Compras</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/carrito.css">
 </head>
 <body>
     <header class="header">
@@ -70,6 +41,11 @@
                             <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
                             <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                         </svg>
+                        <p>
+                            <?php
+                                echo $nombre;
+                            ?>
+                        </p>
                     </span>
                 </a>
                 <a href="./carrito.php" class="letra-azul">
@@ -88,35 +64,22 @@
         </nav>
     </header>
 
-    <div class="contenedor-main">
-        <main class="main">
-            <h2>Inicia Sesión</h2>
-            <form method="POST" class="formulario">
-                <div class="contenedor-campos">
-                    <label for="email">Correo Electrónico:</label>
-                    <input id="email" name="email" type="email" placeholder="Ingresa tu correo aquí" required>
-                </div>
-                <div class="contenedor-campos">
-                    <label for="password">Contraseña:</label>
-                    <input id="password" name="password" type="password" placeholder="Ingresa tu contraseña aquí" required>
-                </div>
-                <div class="contenedor-checkbox">
-                    <input type="checkbox">
-                    <label>Recuérdame</label>
-                </div>
-    
-                <button>Iniciar Sesión</button>
-    
-                <div>
-                    <a href="">¿Has olvidado la contraseña?</a>
-                </div>
-    
-                <div class="registro">
-                    <a href="./registro.php">Regístrese</a>
-                </div>
-            </form>
-        </main>
-    </div>
+    <main class="main">
+        <div class="seccion-carrito">
+            <div class="contenedor-carrito">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="68" height="68" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                    <path d="M17 17h-11v-14h-2" />
+                    <path d="M6 5l14 1l-1 7h-13" />
+                </svg>
+            </div>
+            <h2>Tu Carro de Compras está vacío</h2>
+            <h3>Agrega productos ahora</h3>
+            <a href="./index.php">Seguir comprando</a>
+        </div>
+    </main>
 
     <footer class="footer">
         <p>Síguenos:</p>

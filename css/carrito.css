@@ -1,0 +1,119 @@
+:root {
+    --azul:rgb(37,49,140);
+    --amarillo:rgb(248,188,2);
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; 
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+h1,h2,h3,p{
+    padding: 0;
+    margin: 0;
+}
+
+/* Código neto para diseño */
+
+/* Código de la barra */
+.logo{
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.navegacion{
+    display: flex;
+    align-items: center;
+    column-gap: 5rem;
+}
+
+.block{
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--amarillo);
+    padding:1.5rem 3rem;
+}
+
+.letra-azul{
+    font-weight: bold;
+    color: var(--azul);
+}
+
+.icon-block{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 0.5rem;
+}
+
+/* Main */
+
+.main{
+    margin-top: 18rem;
+}
+
+.seccion-carrito{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 1.5rem;
+    padding: 1.5rem 3rem;
+}
+
+.seccion-carrito a{
+    background-color: var(--amarillo);
+    color: var(--azul);
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+/* Footer */
+
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    padding:1.5rem 3rem;
+    row-gap: 1.5rem;
+}
+
+.redes-ayuda{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
