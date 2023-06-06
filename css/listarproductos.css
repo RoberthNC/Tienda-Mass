@@ -1,0 +1,120 @@
+:root {
+    --azul:rgb(37,49,140);
+    --amarillo:rgb(248,188,2);
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; 
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+h1,h2,h3,p{
+    padding: 0;
+    margin: 0;
+}
+
+/* Código neto para diseño */
+
+/* Código para el header */
+.header{
+    display: flex;
+    justify-content: center;
+    background-color: var(--amarillo);
+    padding:1.5rem 3rem;
+}
+
+.letra-azul{
+    font-weight: bold;
+    font-size: 2.8rem;
+    color: var(--azul);
+}
+
+/* Código para el main */
+
+.main{
+    height: 91.5vh;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.contenedor-izquierda{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15rem;
+    border-right: solid 1px black;
+    padding: 2.5rem;
+}
+
+.contenedor-izquierda img{
+    width: 80%;
+}
+
+.contenedor-derecha{
+    margin-left: 5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 4.5rem;
+    padding: 2.5rem;
+}
+
+.formulario{
+    margin-top: 5rem;
+    padding: 0 5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 2rem;
+}
+
+.formulario button{
+    background-color: white;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.formulario input[type="text"]{
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid;
+    width: 30rem;
+}
+
+/* Sección de la tabla de productos */
+
+.contenedor-tabla{
+    display: flex;
+    justify-content: center;
+}
+
+table, th,td{
+    border-collapse: collapse;
+}
+
+th,td{
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+th:nth-child(7),
+th:nth-child(8){
+    border: none;
+}
+
+th,td{
+    text-align: left;
+    padding: 1rem 1.5rem;
+}

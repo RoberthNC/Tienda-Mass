@@ -23,14 +23,14 @@
                 <img src="../img/productos.jpg" alt="Metáfora de productos">
                 <div class="botones">
                     <a href="./nuevoproducto.php">AGREGAR</a>
-                    <button>MOSTRAR</button>
+                    <a href="./listarproductos.php">MOSTRAR</a>
                 </div>
             </div>
             <div class="contenedor-seccion">
                 <h2>CLIENTES</h2>
                 <img src="../img/clientes.jpg" alt="Metáfora de clientes">
                 <div class="botones">
-                    <button>MOSTRAR</button>
+                    <a href="./listarclientes.php">MOSTRAR</a>
                 </div>
             </div>
             <div class="contenedor-seccion">
@@ -38,7 +38,7 @@
                 <img src="../img/proveedores.jpg" alt="Metáfora de proveedores">
                 <div class="botones">
                     <a href="./nuevoproveedor.php">AGREGAR</a>
-                    <button>MOSTRAR</button>
+                    <a href="./listarproveedores.php">MOSTRAR</a>
                 </div>
             </div>
         </div>
@@ -48,14 +48,14 @@
                 <img src="../img/categorias.png" alt="Metáfora de categorías">
                 <div class="botones">
                     <a href="./nuevacategoria.php">AGREGAR</a>
-                    <button>MOSTRAR</button>
+                    <a href="./listarcategorias.php">MOSTRAR</a>
                 </div>
             </div>
             <div class="contenedor-seccion">
                 <h2>REPORTE DE VENTAS</h2>
                 <img src="../img/ventas.jpg" alt="Metáfora de reporte de ventas">
                 <div class="botones">
-                    <button>MOSTRAR</button>
+                    <a href="./listarventas.php">MOSTRAR</a>
                 </div>
             </div>
         </div>

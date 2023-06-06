@@ -83,6 +83,7 @@
         $id_proveedor = 2;
         $id_marca = 1;
         $id_subcategoria = 1;
+
         $imagen = $_FILES["imagen"];
 
         $carpetaProductos = "../productos";
@@ -93,9 +94,9 @@
 
         $nombreImagen = md5(uniqid(rand(),true)) . ".jpg";
 
-        move_uploaded_file($imagen["tmp_name"],$carpetaProductos . $nombreImagen);
+        move_uploaded_file($imagen["tmp_name"],$carpetaProductos . "/". $nombreImagen);
 
-        $query = "INSERT INTO producto(nombre,precio_venta,descripcion_producto,stock,precio_compra,id_proveedor,id_marca,id_subcategoria,imagen)VALUES('$nombre','$precio_venta','$descripcion_producto','$stock','$precio_compra',$id_proveedor,$id_marca,$id_subcategoria,'$imagen')";
+        $query = "INSERT INTO producto(nombre,precio_venta,descripcion_producto,stock,precio_compra,id_proveedor,id_marca,id_subcategoria,imagen)VALUES('$nombre','$precio_venta','$descripcion_producto','$stock','$precio_compra',$id_proveedor,$id_marca,$id_subcategoria,'$nombreImagen')";
         $resultado = mysqli_query($conn,$query);
         if($resultado){
             header("Location: ./admin.php");

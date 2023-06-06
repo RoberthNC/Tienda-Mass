@@ -83,3 +83,11 @@ h1,h2,h3,p{
     display: flex;
     gap: 1.5rem;
 }
+
+.botones a{
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: solid 1px black;
+    background-color: white;
+    color: black;
+}

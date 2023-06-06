@@ -2,6 +2,11 @@
 
     session_start();
 
+    require "../config/conexion.php";
+    require "../config/debuguear.php";
+
+    $conn = conexionBD();
+
     $id = $_SESSION["id"];
     $nombre = $_SESSION["nombre"];
 
@@ -69,7 +74,27 @@
     </div>
 
     <div class="contenedor-oferta">
-        <p>-- Productos en Oferta</p>
+        <p>-- Productos en Oferta --</p>
+    </div>
+
+    <div class="contenedor-productos">
+        <?php
+
+            $queryProductos = "SELECT * FROM producto";
+            $resultadosProductos = mysqli_query($conn, $queryProductos);
+
+            while($row=mysqli_fetch_assoc($resultadosProductos)){
+        ?>
+
+        <div class="bloque-producto">
+            <h2><?php echo $row["nombre"];?></h2>
+            <img src="../productos/<?php echo $row['imagen']?>" alt="Producto">
+            <p><?php echo $row["descripcion_producto"];?></p>
+        </div>
+
+        <?php
+            }
+        ?>
     </div>
 
     <footer class="footer">
