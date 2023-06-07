@@ -86,7 +86,7 @@
                                     <td><?php echo $row["stock"];?></td>
                                     <td><?php echo $row["precio_compra"];?></td>
                                     <td>
-                                        <a href="#">
+                                        <a href="./actualizarproductos.php?id=<?php echo $row['id_producto']?>">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#0000ff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                 <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
