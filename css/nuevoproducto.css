@@ -96,7 +96,8 @@ h1,h2,h3,p{
 }
 
 .contenedor-campos input[type="text"],
-.contenedor-campos input[type="number"]{
+.contenedor-campos input[type="number"],
+.contenedor-campos select{
     padding: 1rem;
     border-radius: 5px;
     border: 1px solid;

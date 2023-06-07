@@ -1,3 +1,52 @@
+<?php
+
+    require "../config/conexion.php";
+    require "../config/debuguear.php";
+
+    
+
+    $conn = conexionBD();
+
+    $queryProveedores = "SELECT * FROM proveedor";
+    $queryMarcas = "SELECT * FROM marca";
+    $querySubcategorias = "SELECT * FROM subcategoria";
+
+    $resultadosProveedores = mysqli_query($conn,$queryProveedores);
+    $resultadosMarcas = mysqli_query($conn,$queryMarcas);
+    $resultadosSubcategorias = mysqli_query($conn,$querySubcategorias);
+
+
+    if($_SERVER["REQUEST_METHOD"]==="POST"){
+        $nombre = $_POST["nombre"];
+        $precio_venta = $_POST["precio_venta"];
+        $descripcion_producto = $_POST["descripcion_producto"];
+        $stock = $_POST["stock"];
+        $precio_compra = $_POST["precio_compra"];
+        $id_proveedor = $_POST["proveedor"];
+        $id_marca = $_POST["marca"];
+        $id_subcategoria = $_POST["subcategoria"];
+
+        $imagen = $_FILES["imagen"];
+
+        $carpetaProductos = "../productos";
+
+        if(!is_dir($carpetaProductos)){
+            mkdir($carpetaProductos);
+        }
+
+        $nombreImagen = md5(uniqid(rand(),true)) . ".jpg";
+
+        move_uploaded_file($imagen["tmp_name"],$carpetaProductos . "/". $nombreImagen);
+
+        $query = "INSERT INTO producto(nombre,precio_venta,descripcion_producto,stock,precio_compra,id_proveedor,id_marca,id_subcategoria,imagen)VALUES('$nombre','$precio_venta','$descripcion_producto','$stock','$precio_compra',$id_proveedor,$id_marca,$id_subcategoria,'$nombreImagen')";
+        $resultado = mysqli_query($conn,$query);
+        if($resultado){
+            header("Location: ./admin.php");
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,12 +66,14 @@
     </header>
     <main class="main">
         <div class="contenedor-izquierda">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="68" height="68" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M5 12l14 0" />
-                <path d="M5 12l6 6" />
-                <path d="M5 12l6 -6" />
-            </svg>
+            <a href="./admin.php">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="68" height="68" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M5 12l14 0" />
+                    <path d="M5 12l6 6" />
+                    <path d="M5 12l6 -6" />
+                </svg>
+            </a>
             <img src="../img/productos.jpg" alt="Nuevo producto">
         </div>
         <div class="contenedor-derecha">
@@ -50,6 +101,48 @@
                         <input type="number" name="precio_compra" placeholder="Ingrese el precio de compra" required>
                     </div>
 
+                    <div class="contenedor-campos">
+                        <label for="proveedor">PROVEEDOR:</label>
+                        <select name="proveedor">
+                            <option value="">-- SELECCIONE UN PROVEEDOR --</option>
+                        <?php
+                            while($rowProveedores=mysqli_fetch_assoc($resultadosProveedores)){
+                        ?>
+                            <option value="<?php echo $rowProveedores['id_proveedor']?>"><?php echo $rowProveedores["nombre"]?></option>
+                        <?php
+                            }
+                        ?>
+                        </select>
+                    </div>
+
+                    <div class="contenedor-campos">
+                        <label for="marca">MARCA:</label>
+                        <select name="marca">
+                            <option value="">-- SELECCIONE UNA MARCA --</option>
+                        <?php
+                            while($rowMarcas=mysqli_fetch_assoc($resultadosMarcas)){
+                        ?>
+                            <option value="<?php echo $rowMarcas['id_marca']?>"><?php echo $rowMarcas["descripcion_marca"]?></option>
+                        <?php
+                            }
+                        ?>
+                        </select>
+                    </div>
+
+                    <div class="contenedor-campos">
+                        <label for="subcategoria">SUBCATEGORIA:</label>
+                        <select name="subcategoria">
+                            <option value="">-- SELECCIONE UNA SUBCATEGORIA --</option>
+                        <?php
+                            while($rowSubcategorias=mysqli_fetch_assoc($resultadosSubcategorias)){
+                        ?>
+                            <option value="<?php echo $rowSubcategorias['id_subcategoria']?>"><?php echo $rowSubcategorias["nombre"]?></option>
+                        <?php
+                            }
+                        ?>
+                        </select>
+                    </div>
+
                     <input type="file" name="imagen" accept="image/jpeg, image/png">
 
                     <input type="submit" value="GUARDAR PRODUCTO">
@@ -64,43 +157,3 @@
     </main>
 </body>
 </html>
-
-<?php
-
-    require "../config/conexion.php";
-    require "../config/debuguear.php";
-
-    
-
-    $conn = conexionBD();
-
-    if($_SERVER["REQUEST_METHOD"]==="POST"){
-        $nombre = $_POST["nombre"];
-        $precio_venta = $_POST["precio_venta"];
-        $descripcion_producto = $_POST["descripcion_producto"];
-        $stock = $_POST["stock"];
-        $precio_compra = $_POST["precio_compra"];
-        $id_proveedor = 2;
-        $id_marca = 1;
-        $id_subcategoria = 1;
-
-        $imagen = $_FILES["imagen"];
-
-        $carpetaProductos = "../productos";
-
-        if(!is_dir($carpetaProductos)){
-            mkdir($carpetaProductos);
-        }
-
-        $nombreImagen = md5(uniqid(rand(),true)) . ".jpg";
-
-        move_uploaded_file($imagen["tmp_name"],$carpetaProductos . "/". $nombreImagen);
-
-        $query = "INSERT INTO producto(nombre,precio_venta,descripcion_producto,stock,precio_compra,id_proveedor,id_marca,id_subcategoria,imagen)VALUES('$nombre','$precio_venta','$descripcion_producto','$stock','$precio_compra',$id_proveedor,$id_marca,$id_subcategoria,'$nombreImagen')";
-        $resultado = mysqli_query($conn,$query);
-        if($resultado){
-            header("Location: ./admin.php");
-        }
-    }
-
-?>
