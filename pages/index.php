@@ -90,6 +90,7 @@
             <h2><?php echo $row["nombre"];?></h2>
             <img src="../productos/<?php echo $row['imagen']?>" alt="Producto">
             <p><?php echo $row["descripcion_producto"];?></p>
+            <button onclick="agregarId('<?php echo $row['id_producto']?>')">Agregar al Carrito</button>
         </div>
 
         <?php
@@ -137,5 +138,6 @@
             </div>
         </div>
     </footer>
+    <script src="../js/index.js"></script>
 </body>
 </html>

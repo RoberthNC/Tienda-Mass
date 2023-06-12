@@ -121,6 +121,17 @@ h1,h2,h3,p{
     font-size: 14px;
 }
 
+.bloque-producto button{
+    cursor: pointer;
+    margin-top: 5px;
+    background-color: var(--amarillo);
+    font-size: 14px;
+    color: var(--azul);
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+}
+
 /* Footer */
 
 .footer{

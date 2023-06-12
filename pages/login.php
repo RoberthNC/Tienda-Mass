@@ -20,6 +20,7 @@
             //Verificamos si es cliente
             if($datos["es_admin"]==="0"){
                 $_SESSION["id"] = $datos["id_cliente"];
+                $_SESSION["arregloIdProductos"] = [];
                 $id_temp = $_SESSION["id"];
                 //Obtenemos el nombre del cliente
                 $queryCliente = "SELECT * FROM cliente WHERE id_cliente='$id_temp'";

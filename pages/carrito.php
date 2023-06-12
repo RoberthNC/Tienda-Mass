@@ -1,9 +1,25 @@
 <?php
 
     session_start();
+    error_reporting(0);
 
     $id = $_SESSION["id"];
     $nombre = $_SESSION["nombre"];
+
+    $idProducto = $_POST["idProductoNuevo"];
+
+    $band = false;
+    foreach($_SESSION["arregloIdProductos"] as $idActual){
+        if($idProducto == $idActual){
+            $band = true;
+            break;
+        }
+    }
+    if(!$band){
+        array_push($_SESSION["arregloIdProductos"], $idProducto);
+    }
+
+    $cantidadCarrito = count($_SESSION["arregloIdProductos"]);
 
 ?>
 
@@ -65,21 +81,41 @@
     </header>
 
     <main class="main">
-        <div class="seccion-carrito">
-            <div class="contenedor-carrito">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="68" height="68" viewBox="0 0 24 24" stroke-width="1.5" stroke="#25318C" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                    <path d="M17 17h-11v-14h-2" />
-                    <path d="M6 5l14 1l-1 7h-13" />
-                </svg>
+        <?php
+            if($cantidadCarrito == 0){
+        ?>
+            <div class="seccion-carrito">
+                <div class="contenedor-carrito">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="68" height="68" viewBox="0 0 24 24" stroke-width="1.5" stroke="#25318C" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                        <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                        <path d="M17 17h-11v-14h-2" />
+                        <path d="M6 5l14 1l-1 7h-13" />
+                    </svg>
+                </div>
+                <h2>Tu Carro de Compras está vacío</h2>
+                <h3>Agrega productos ahora</h3>
+                <a href="./index.php">Seguir comprando</a>
             </div>
-            <h2>Tu Carro de Compras está vacío</h2>
-            <h3>Agrega productos ahora</h3>
-            <a href="./index.php">Seguir comprando</a>
-        </div>
+        <?php
+            }
+            else{
+        ?>
+            
+        <?php
+            }
+        ?>
     </main>
+
+    <?php
+
+        echo "<p>".$cantidadCarrito."</p>";
+        foreach($_SESSION["arregloIdProductos"] as $id){
+            echo "<p>".$id."</p>";
+        }
+
+    ?>
 
     <footer class="footer">
         <p>Síguenos:</p>
@@ -121,5 +157,6 @@
             </div>
         </div>
     </footer>
+    <script src="../js/index.js"></script>
 </body>
 </html>
