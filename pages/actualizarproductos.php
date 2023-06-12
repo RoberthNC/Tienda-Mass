@@ -141,7 +141,7 @@
 
                     <input type="file" name="imagen" accept="image/jpeg, image/png">
 
-                    <input type="submit" value="GUARDAR PRODUCTO">
+                    <input type="submit" value="ACTUALIZAR PRODUCTO">
                 </div>
 
                 <div class="bloque2-formulario">

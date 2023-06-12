@@ -1,3 +1,28 @@
+<?php
+
+    require "../config/conexion.php";
+    require "../config/debuguear.php";
+
+    $conn = conexionBD();
+
+    $idActualizar = $_GET["id"];
+
+    //Obtener los detalles de la categoría a actualizar
+    $categoriaActualizar = "SELECT * FROM categoria WHERE id_categoria='$idActualizar'";
+    $resultadosCategoriaActualizar = mysqli_query($conn, $categoriaActualizar);
+    $datosCategoriaActualizar = mysqli_fetch_assoc($resultadosCategoriaActualizar);
+
+    if($_SERVER["REQUEST_METHOD"] === "POST"){
+        $nombre = $_POST["nombre"];
+        $queryActualizar = "UPDATE categoria SET nombre='$nombre' WHERE id_categoria='$idActualizar'";
+        $resultadosActualizarCategoria = mysqli_query($conn,$queryActualizar);
+        if($resultadosActualizarCategoria){
+            header("Location: ./listarcategorias.php");
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,14 +52,14 @@
         </div>
         <div class="contenedor-derecha">
             <h2>ACTUALIZAR UNA CATEGORIA</h2>
-            <form class="formulario">
+            <form class="formulario" method="POST">
                 <div class="bloque1-formulario">
                     <div class="contenedor-campos">
                         <label for="nombre">NOMBRE:</label>
-                        <input type="text" placeholder="Ingrese el nombre" required>
+                        <input type="text" name="nombre" placeholder="Ingrese el nombre" required value="<?php echo $datosCategoriaActualizar['nombre']?>">
                     </div>
 
-                    <button>ACTUALIZAR CATEGORIA</button>
+                    <input type="submit" value="ACTUALIZAR CATEGORIA">
                 </div>
 
                 <div class="bloque2-formulario">

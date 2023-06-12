@@ -25,7 +25,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de Productos</title>
+    <title>Listado de Clientes</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,7 +52,7 @@
             <h2>LISTADO DE CLIENTES</h2>
             <form method="POST" class="formulario">
                 <h3>Buscar</h3>
-                <input type="text" name="filtro" placeholder="Ingrese el producto a buscar">
+                <input type="text" name="filtro" placeholder="Ingrese el cliente a buscar">
                 <button>
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
