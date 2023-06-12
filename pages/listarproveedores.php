@@ -5,15 +5,15 @@
 
     $conn = conexionBD();
 
-    $queryProductos = "SELECT * FROM producto";
-    $resultadosProductos = mysqli_query($conn,$queryProductos);
+    $queryProveedores = "SELECT * FROM proveedor";
+    $resultadosProveedores = mysqli_query($conn,$queryProveedores);
 
     $band = false;
 
     if($_SERVER["REQUEST_METHOD"]==="POST"){
         $band = true;
         $filtro = $_POST["filtro"];
-        $queryFiltrado = "SELECT * FROM producto WHERE nombre LIKE '%$filtro%'";
+        $queryFiltrado = "SELECT * FROM proveedor WHERE nombre LIKE '%$filtro%'";
         $resultadosFiltrado = mysqli_query($conn,$queryFiltrado);
     }
 
@@ -25,12 +25,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de Productos</title>
+    <title>Listado de Proveedores</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/listarproductos.css">
+    <link rel="stylesheet" href="../css/listarproveedores.css">
 </head>
 <body>
     <header class="header">
@@ -46,13 +46,13 @@
                     <path d="M5 12l6 -6" />
                 </svg>
             </a>
-            <img src="../img/productos.jpg" alt="Nuevo producto">
+            <img src="../img/proveedores.jpg" alt="Proveedores">
         </div>
         <div class="contenedor-derecha">
-            <h2>LISTADO DE PRODUCTOS</h2>
+            <h2>LISTADO DE PROVEEDORES</h2>
             <form method="POST" class="formulario">
                 <h3>Buscar</h3>
-                <input type="text" name="filtro" placeholder="Ingrese el producto a buscar">
+                <input type="text" name="filtro" placeholder="Ingrese el proveedor a buscar">
                 <button>
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -66,27 +66,29 @@
                     <thead>
                         <th>Id</th>
                         <th>Nombre</th>
-                        <th>Precio de venta</th>
-                        <th>Descripción</th>
-                        <th>Stock</th>
-                        <th>Precio de compra</th>
+                        <th>Apellido</th>
+                        <th>RUC</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
+                        <th>Dirección</th>
                         <th></th>
                         <th></th>
                     </thead>
                     <tbody>
                         <?php
                             if($band === false){
-                                while($row=mysqli_fetch_assoc($resultadosProductos)){                        
+                                while($row=mysqli_fetch_assoc($resultadosProveedores)){                        
                         ?>
                                 <tr>
-                                    <td><?php echo $row["id_producto"];?></td>
+                                    <td><?php echo $row["id_proveedor"];?></td>
                                     <td><?php echo $row["nombre"];?></td>
-                                    <td><?php echo $row["precio_venta"];?></td>
-                                    <td><?php echo $row["descripcion_producto"];?></td>
-                                    <td><?php echo $row["stock"];?></td>
-                                    <td><?php echo $row["precio_compra"];?></td>
+                                    <td><?php echo $row["apellido"];?></td>
+                                    <td><?php echo $row["ruc"];?></td>
+                                    <td><?php echo $row["telefono"];?></td>
+                                    <td><?php echo $row["email"];?></td>
+                                    <td><?php echo $row["direccion_domicilio"];?></td>
                                     <td>
-                                        <a href="./actualizarproductos.php?id=<?php echo $row['id_producto']?>">
+                                        <a href="./actualizarproveedores.php?id=<?php echo $row['id_proveedor']?>">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#0000ff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                 <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
@@ -114,14 +116,15 @@
                                 while($row2=mysqli_fetch_assoc($resultadosFiltrado)){
                         ?>
                                 <tr>
-                                    <td><?php echo $row2["id_producto"];?></td>
+                                    <td><?php echo $row2["id_proveedor"];?></td>
                                     <td><?php echo $row2["nombre"];?></td>
-                                    <td><?php echo $row2["precio_venta"];?></td>
-                                    <td><?php echo $row2["descripcion_producto"];?></td>
-                                    <td><?php echo $row2["stock"];?></td>
-                                    <td><?php echo $row2["precio_compra"];?></td>
+                                    <td><?php echo $row2["apellido"];?></td>
+                                    <td><?php echo $row2["ruc"];?></td>
+                                    <td><?php echo $row2["telefono"];?></td>
+                                    <td><?php echo $row2["email"];?></td>
+                                    <td><?php echo $row2["direccion_domicilio"];?></td>
                                     <td>
-                                        <a href="./actualizarproductos.php?id=<?php echo $row2['id_producto']?>">
+                                        <a href="./actualizarproveedores.php?id=<?php echo $row2['id_proveedor']?>">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#0000ff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                 <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />

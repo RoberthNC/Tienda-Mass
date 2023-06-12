@@ -72,46 +72,49 @@ h1,h2,h3,p{
 }
 
 .formulario{
+    margin-top: 5rem;
+    padding: 0 5rem;
     display: flex;
-    gap: 5rem;
-}
-
-.bloque1-formulario{
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-}
-
-.bloque1-formulario input[type="submit"]{
-    margin-top: 2rem;
-    padding: 1rem;
-    border-radius: 5px;
-    border: 1px solid;
-}
-
-.contenedor-campos{
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-}
-
-.contenedor-campos input[type="text"],
-.contenedor-campos input[type="number"],
-.contenedor-campos input[type="email"],
-.contenedor-campos input[type="tel"]{
-    padding: 1rem;
-    border-radius: 5px;
-    border: 1px solid;
-    width: 35rem;
-}
-
-.bloque2-formulario{
-    display: flex;
-    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
-    row-gap: 2rem;
+    column-gap: 2rem;
 }
 
-.bloque2-formulario img{
-    width: 80%;
+.formulario button{
+    background-color: white;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.formulario input[type="text"]{
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid;
+    width: 30rem;
+}
+
+/* Sección de la tabla de productos */
+
+.contenedor-tabla{
+    display: flex;
+    justify-content: center;
+}
+
+table, th,td{
+    border-collapse: collapse;
+}
+
+th,td{
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+th:nth-child(8),
+th:nth-child(9){
+    border: none;
+}
+
+th,td{
+    text-align: left;
+    padding: 1rem 1.5rem;
 }
