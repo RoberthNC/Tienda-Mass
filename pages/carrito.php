@@ -3,11 +3,17 @@
     session_start();
     error_reporting(0);
 
+    require "../config/conexion.php";
+    require "../config/debuguear.php";
+
+    $conn = conexionBD();
+
     $id = $_SESSION["id"];
     $nombre = $_SESSION["nombre"];
 
     $idProducto = $_POST["idProductoNuevo"];
 
+    //Agregar un id nuevo
     $band = false;
     foreach($_SESSION["arregloIdProductos"] as $idActual){
         if($idProducto == $idActual){
@@ -15,10 +21,12 @@
             break;
         }
     }
-    if(!$band){
-        array_push($_SESSION["arregloIdProductos"], $idProducto);
+    if($band === false){
+        $_SESSION["arregloIdProductos"][]= $idProducto;
     }
-
+    //Limpiar los null
+    $_SESSION["arregloIdProductos"] = array_filter($_SESSION["arregloIdProductos"],fn($id)=>$id!==null);
+    //Cantidad de elementos en el carrito
     $cantidadCarrito = count($_SESSION["arregloIdProductos"]);
 
 ?>
@@ -102,20 +110,47 @@
             }
             else{
         ?>
-            
+            <!-- Carrito aquí -->
+            <div class="contenedor-seccion">
+                <div class="bloque-carrito">
+                    <h3>CARRITO</h3>
+                    <div class="elementos-carrito">
+                        <?php
+                        
+                            foreach($_SESSION["arregloIdProductos"] as $idProductoActual){
+                                $queryProductoActual = "SELECT * FROM producto WHERE id_producto='$idProductoActual'";
+                                $resultadosProductoActual = mysqli_query($conn, $queryProductoActual);
+                                $datosProductoActual = mysqli_fetch_assoc($resultadosProductoActual);
+                        ?>
+                            <!-- Este div es el que se va a generar por la bd -->
+                            <div class="contenido-producto">
+                                <img src="../productos/<?php echo $datosProductoActual['imagen'];?>" alt="Producto">
+                                <div class="descripcion-producto">
+                                    <p><?php echo $datosProductoActual['nombre'];?></p>
+                                    <p><?php echo $datosProductoActual['nombre'];?></p>
+                                    <p>Precio: <?php echo $datosProductoActual['precio_venta'];?></p>
+                                    <button>Eliminar</button>
+                                </div>
+                            </div>
+                        <?php
+                            }
+                        ?>
+                    </div>
+                </div>
+                <div class="bloque-resumen">
+                    <h3>RESUMEN DE LA ORDEN</h3>
+                    <div class="bloque-resumen_resumen">
+                        <p>PRODUCTOS (<?php echo $cantidadCarrito;?>)</p>
+                        <p>SUB TOTAL S/. 5929.00</p>
+                        <p>TOTAL(*) S/. 5929.00</p>
+                        <button>Continuar Compra</button>
+                    </div>
+                </div>
+            </div>
         <?php
             }
         ?>
     </main>
-
-    <?php
-
-        echo "<p>".$cantidadCarrito."</p>";
-        foreach($_SESSION["arregloIdProductos"] as $id){
-            echo "<p>".$id."</p>";
-        }
-
-    ?>
 
     <footer class="footer">
         <p>Síguenos:</p>

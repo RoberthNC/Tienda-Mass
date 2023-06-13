@@ -7,7 +7,6 @@ const agregarId = async(id) => {
             body:data
         });
         alert("Producto agregado al carrito");
-        window.location.href = "../pages/carrito.php";
     } catch (error) {
         console.log(error)
     }
