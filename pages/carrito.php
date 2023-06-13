@@ -28,6 +28,10 @@
     $_SESSION["arregloIdProductos"] = array_filter($_SESSION["arregloIdProductos"],fn($id)=>$id!==null);
     //Cantidad de elementos en el carrito
     $cantidadCarrito = count($_SESSION["arregloIdProductos"]);
+    //Subtotal
+    $subtotal = 0;
+    //IGV
+    $igv = 0;
 
 ?>
 
@@ -121,6 +125,7 @@
                                 $queryProductoActual = "SELECT * FROM producto WHERE id_producto='$idProductoActual'";
                                 $resultadosProductoActual = mysqli_query($conn, $queryProductoActual);
                                 $datosProductoActual = mysqli_fetch_assoc($resultadosProductoActual);
+                                $subtotal += (float)$datosProductoActual["precio_venta"];
                         ?>
                             <!-- Este div es el que se va a generar por la bd -->
                             <div class="contenido-producto">
@@ -140,9 +145,12 @@
                 <div class="bloque-resumen">
                     <h3>RESUMEN DE LA ORDEN</h3>
                     <div class="bloque-resumen_resumen">
-                        <p>PRODUCTOS (<?php echo $cantidadCarrito;?>)</p>
-                        <p>SUB TOTAL S/. 5929.00</p>
-                        <p>TOTAL(*) S/. 5929.00</p>
+                        <p>PRODUCTOS: (<?php echo $cantidadCarrito;?>)</p>
+                        <p>SUBTOTAL: S/. <?php echo $subtotal;?></p>
+                        <?php
+                            $igv = $subtotal * 0.18;
+                        ?>
+                        <p>IGV: S/. <?php echo $igv;?></p>
                         <button>Continuar Compra</button>
                     </div>
                 </div>
