@@ -33,6 +33,9 @@
     <link rel="stylesheet" href="../css/listarproductos.css">
 </head>
 <body>
+    <?php
+        include "./modales/modaleliminarproducto.php";
+    ?>
     <header class="header">
         <i class="letra-azul">Tienda Mass</i>
     </header>
