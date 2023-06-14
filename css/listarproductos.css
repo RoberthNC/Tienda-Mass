@@ -118,3 +118,15 @@ th,td{
     text-align: left;
     padding: 1rem 1.5rem;
 }
+
+/* Botones eliminar */
+.boton-eliminar{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Clase para el modal */
+.ocultar-modal{
+    display: none;
+}
