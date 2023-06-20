@@ -5,7 +5,7 @@
 
     $conn = conexionBD();
 
-    $queryClientes = "SELECT * FROM cliente";
+    $queryClientes = "SELECT cliente.id_cliente as id_cliente, cliente.nombre as nombre, cliente.apellido as apellido, cliente.dni as dni, cliente.telefono as telefono, cliente.email as email, cliente.direccion_domicilio as direccion_domicilio FROM cliente INNER JOIN usuario ON cliente.id_cliente=usuario.id_cliente WHERE usuario.es_admin=0";
     $resultadosClientes = mysqli_query($conn,$queryClientes);
 
     $band = false;
@@ -31,8 +31,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/listarclientes.css">
+    <script src="../js/index.js"></script>
 </head>
 <body>
+    <?php
+        include "./modaleliminarcliente.php";
+    ?>
     <header class="header">
         <i class="letra-azul">Tienda Mass</i>
     </header>
@@ -71,6 +75,7 @@
                         <th>Teléfono</th>
                         <th>email</th>
                         <th>Dirección</th>
+                        <th></th>
                     </thead>
                     <tbody>
                         <?php
@@ -85,6 +90,18 @@
                                     <td><?php echo $row["telefono"];?></td>
                                     <td><?php echo $row["email"];?></td>
                                     <td><?php echo $row["direccion_domicilio"];?></td>
+                                    <td>
+                                        <button class="boton-eliminar" onclick="mostrarModalEliminarCliente(<?php echo $row['id_cliente'];?>)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FF0000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <path d="M4 7l16 0" />
+                                                <path d="M10 11l0 6" />
+                                                <path d="M14 11l0 6" />
+                                                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                            </svg>
+                                        </button>
+                                    </td>
                                 </tr>
                         <?php
                                 }
@@ -100,6 +117,18 @@
                                     <td><?php echo $row2["telefono"];?></td>
                                     <td><?php echo $row2["email"];?></td>
                                     <td><?php echo $row2["direccion_domicilio"];?></td>
+                                    <td>
+                                        <button class="boton-eliminar" onclick="mostrarModalEliminarCliente(<?php echo $row2['id_cliente'];?>)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FF0000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <path d="M4 7l16 0" />
+                                                <path d="M10 11l0 6" />
+                                                <path d="M14 11l0 6" />
+                                                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                            </svg>
+                                        </button>
+                                    </td>
                                 </tr>
                         <?php
                                 }

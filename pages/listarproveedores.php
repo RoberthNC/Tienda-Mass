@@ -31,8 +31,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/listarproveedores.css">
+    <script src="../js/index.js"></script>
 </head>
 <body>
+    <?php
+        include "./modaleliminarproveedor.php";
+    ?>
     <header class="header">
         <i class="letra-azul">Tienda Mass</i>
     </header>
@@ -97,7 +101,9 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="#">
+                                        <button class="boton-eliminar"
+                                        onclick="mostrarModalEliminarProveedor(<?php echo $row['id_proveedor'];?>)"
+                                        >
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FF0000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                 <path d="M4 7l16 0" />
@@ -106,7 +112,7 @@
                                                 <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
                                                 <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
                                             </svg>
-                                        </a>
+                                        </button>
                                     </td>
                                 </tr>
                         <?php
@@ -133,7 +139,9 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="#">
+                                        <button class="boton-eliminar" 
+                                            onclick="mostrarModalEliminarProveedor(<?php echo $row2['id_proveedor'];?>)"
+                                        >
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FF0000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                 <path d="M4 7l16 0" />
@@ -142,7 +150,7 @@
                                                 <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
                                                 <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
                                             </svg>
-                                        </a>
+                                        </button>
                                     </td>
                                 </tr>
                         <?php
