@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/listarclientes.css">
-    <script src="../js/index.js"></script>
+    <script src="../js/cliente.js"></script>
 </head>
 <body>
     <?php
