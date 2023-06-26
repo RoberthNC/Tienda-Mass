@@ -11,7 +11,7 @@
         $email = $_POST["email"];
         $password = $_POST["password"];
 
-        $query = "SELECT * FROM usuario WHERE usuario='$email' AND constra='$password'";
+        $query = "SELECT * FROM usuario WHERE usuario='$email' AND contra='$password'";
         $resultado = mysqli_query($conn,$query);
 
         if($resultado->num_rows > 0){

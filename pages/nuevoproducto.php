@@ -9,11 +9,11 @@
 
     $queryProveedores = "SELECT * FROM proveedor";
     $queryMarcas = "SELECT * FROM marca";
-    $querySubcategorias = "SELECT * FROM subcategoria";
+    $queryTipoProductos = "SELECT * FROM tipo_producto";
 
     $resultadosProveedores = mysqli_query($conn,$queryProveedores);
     $resultadosMarcas = mysqli_query($conn,$queryMarcas);
-    $resultadosSubcategorias = mysqli_query($conn,$querySubcategorias);
+    $resultadosTipoProductos = mysqli_query($conn,$queryTipoProductos);
 
 
     if($_SERVER["REQUEST_METHOD"]==="POST"){
@@ -24,7 +24,7 @@
         $precio_compra = $_POST["precio_compra"];
         $id_proveedor = $_POST["proveedor"];
         $id_marca = $_POST["marca"];
-        $id_subcategoria = $_POST["subcategoria"];
+        $id_tipo_producto = $_POST["tipo_producto"];
 
         $imagen = $_FILES["imagen"];
 
@@ -38,7 +38,7 @@
 
         move_uploaded_file($imagen["tmp_name"],$carpetaProductos . "/". $nombreImagen);
 
-        $query = "INSERT INTO producto(nombre,precio_venta,descripcion_producto,stock,precio_compra,id_proveedor,id_marca,id_subcategoria,imagen)VALUES('$nombre','$precio_venta','$descripcion_producto','$stock','$precio_compra',$id_proveedor,$id_marca,$id_subcategoria,'$nombreImagen')";
+        $query = "INSERT INTO producto(nombre,precio_venta,descripcion_producto,stock,precio_compra,id_proveedor,id_marca,id_tipo_producto,imagen)VALUES('$nombre','$precio_venta','$descripcion_producto','$stock','$precio_compra',$id_proveedor,$id_marca,$id_tipo_producto,'$nombreImagen')";
         $resultado = mysqli_query($conn,$query);
         if($resultado){
             header("Location: ./admin.php");
@@ -130,13 +130,13 @@
                     </div>
 
                     <div class="contenedor-campos">
-                        <label for="subcategoria">SUBCATEGORIA:</label>
-                        <select name="subcategoria">
-                            <option value="">-- SELECCIONE UNA SUBCATEGORIA --</option>
+                        <label for="tipo_producto">TIPO DE PRODUCTO:</label>
+                        <select name="tipo_producto">
+                            <option value="">-- SELECCIONE UN TIPO DE PRODUCTO --</option>
                         <?php
-                            while($rowSubcategorias=mysqli_fetch_assoc($resultadosSubcategorias)){
+                            while($rowTipoProductos=mysqli_fetch_assoc($resultadosTipoProductos)){
                         ?>
-                            <option value="<?php echo $rowSubcategorias['id_subcategoria']?>"><?php echo $rowSubcategorias["nombre"]?></option>
+                            <option value="<?php echo $rowTipoProductos['id_tipo_producto']?>"><?php echo $rowTipoProductos["nombre"]?></option>
                         <?php
                             }
                         ?>

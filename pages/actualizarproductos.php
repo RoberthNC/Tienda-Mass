@@ -32,9 +32,9 @@
         $precio_compra = $_POST["precio_compra"];
         $id_proveedor = $_POST["proveedor"];
         $id_marca = $_POST["marca"];
-        $id_subcategoria = $_POST["subcategoria"];
+        $id_tipo_producto = $_POST["tipo_producto"];
 
-        $queryActualizar = "UPDATE producto SET nombre='$nombre', precio_venta='$precio_venta', descripcion_producto='$descripcion_producto', stock='$stock', precio_compra='$precio_compra', id_proveedor='$id_proveedor', id_marca='$id_marca', id_subcategoria='$id_subcategoria' WHERE id_producto='$idActualizar'";
+        $queryActualizar = "UPDATE producto SET nombre='$nombre', precio_venta='$precio_venta', descripcion_producto='$descripcion_producto', stock='$stock', precio_compra='$precio_compra', id_proveedor='$id_proveedor', id_marca='$id_marca', id_tipo_producto='$id_tipo_producto' WHERE id_producto='$idActualizar'";
         $resultadosActualizarProducto = mysqli_query($conn,$queryActualizar);
         if($resultadosActualizarProducto){
             header("Location: ./listarproductos.php");
@@ -126,13 +126,13 @@
                     </div>
 
                     <div class="contenedor-campos">
-                        <label for="subcategoria">SUBCATEGORIA:</label>
-                        <select name="subcategoria">
-                            <option value="">-- SELECCIONE UNA SUBCATEGORIA --</option>
+                        <label for="tipo_producto">TIPO PRODUCTO:</label>
+                        <select name="tipo_producto">
+                            <option value="">-- SELECCIONE UN TIPO DE PRODUCTO --</option>
                         <?php
-                            while($rowSubcategorias=mysqli_fetch_assoc($resultadosSubcategorias)){
+                            while($rowTipoProductos=mysqli_fetch_assoc($resultadosSubcategorias)){
                         ?>
-                            <option value="<?php echo $rowSubcategorias['id_subcategoria']?>" <?php echo $datosProductoActualizar['id_subcategoria']===$rowSubcategorias['id_subcategoria']?'selected':''; ?>><?php echo $rowSubcategorias["nombre"]?></option>
+                            <option value="<?php echo $rowTipoProductos['id_tipo_producto']?>" <?php echo $datosProductoActualizar['id_tipo_producto']===$rowTipoProductos['id_tipo_producto']?'selected':''; ?>><?php echo $rowTipoProductos["nombre"]?></option>
                         <?php
                             }
                         ?>

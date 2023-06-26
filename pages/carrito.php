@@ -27,7 +27,7 @@
     //Limpiar los null
     $_SESSION["arregloIdProductos"] = array_filter($_SESSION["arregloIdProductos"],fn($id)=>$id!==null);
     //Cantidad de elementos en el carrito
-    $cantidadCarrito = count($_SESSION["arregloIdProductos"]);
+    $cantidadCarrito = count($_SESSION["arregloIdProductos"])-1;
     //Subtotal
     $subtotal = 0;
     //IGV

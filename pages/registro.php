@@ -26,7 +26,7 @@
         $id_cliente = $datos["id_cliente"];
 
         //Insertamos en la tabla de usuario
-        $query3 = "INSERT INTO usuario(usuario,constra,es_admin,id_cliente)VALUES('$email','$password',0,'$id_cliente')";
+        $query3 = "INSERT INTO usuario(usuario,contra,es_admin,id_cliente)VALUES('$email','$password',0,'$id_cliente')";
         $resultado3 = mysqli_query($conn, $query3);
 
         if($resultado){
