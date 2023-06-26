@@ -107,7 +107,7 @@
 
         <div class="bloque-producto">
             <h2><?php echo $row["nombre"];?></h2>
-            <img src="../productos/<?php echo $row['imagen']?>" alt="Producto">
+            <img src="../productos/<?php echo $row['imagen']?>" alt="Producto" style="height:150px; width:75px;">
             <p><?php echo $row["descripcion_producto"];?></p>
             <button onclick="agregarId('<?php echo $row['id_producto']?>')">Agregar al Carrito</button>
         </div>

@@ -27,7 +27,7 @@
     //Limpiar los null
     $_SESSION["arregloIdProductos"] = array_filter($_SESSION["arregloIdProductos"],fn($id)=>$id!==null);
     //Cantidad de elementos en el carrito
-    $cantidadCarrito = count($_SESSION["arregloIdProductos"])-1;
+    $cantidadCarrito = count($_SESSION["arregloIdProductos"]);
     //Subtotal
     $subtotal = 0;
     //IGV
@@ -129,7 +129,7 @@
                         ?>
                             <!-- Este div es el que se va a generar por la bd -->
                             <div class="contenido-producto">
-                                <img src="../productos/<?php echo $datosProductoActual['imagen'];?>" alt="Producto">
+                                <img src="../productos/<?php echo $datosProductoActual['imagen'];?>" alt="Producto" style="height:150px; width:75px;">
                                 <div class="descripcion-producto">
                                     <p><?php echo $datosProductoActual['nombre'];?></p>
                                     <p><?php echo $datosProductoActual['nombre'];?></p>
