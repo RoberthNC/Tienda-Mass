@@ -12,6 +12,10 @@ const agregarId = async(id) => {
     }
 }
 
+const modalRegistroExitoso = (band) => {
+    console.log(band)
+}
+
 document.getElementById("continuar_compra")
     .addEventListener("click",()=>{
         window.location.href = "../pages/entrega.php"

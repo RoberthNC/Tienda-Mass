@@ -8,9 +8,10 @@
 
     $idClienteEliminar = $_POST["id"];
 
+    $queryEliminarUsuario = "DELETE FROM usuario WHERE id_cliente='$idClienteEliminar'";
+    $resultadoEliminarUsuario = mysqli_query($conn, $queryEliminarUsuario);
+    
     $queryEliminarCliente = "DELETE FROM cliente WHERE id_cliente='$idClienteEliminar'";
-    // $queryEliminarUsuario = "DELETE FROM usuario WHERE id_cliente='$idClienteEliminar'";
     $resultadoEliminarCliente = mysqli_query($conn, $queryEliminarCliente);
-    // $resultadoEliminarUsuario = mysqli_query($conn, $queryEliminarUsuario);
 
 ?>
