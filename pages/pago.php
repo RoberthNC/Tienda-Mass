@@ -23,7 +23,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrega</title>
+    <title>Pago</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,40 +75,32 @@
     </header>
 
     <main style="margin-top: 15rem; padding:2.5rem 30px;">
-        <h2 style="text-align:center;">Entrega</h2>
+        <h2 style="text-align:center;">Pago</h2>
         <div style="display: flex; justify-content: space-around; margin-top:30px;">
             <!-- Lado Izquierdo -->
             <div style="display: flex; flex-direction: column; gap:50px;">
-                <div style="display: flex; align-items:center; gap:10px; padding:10px 20px; border:solid 2px black;">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#25318C" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" stroke-width="0" fill="currentColor" />
-                    </svg>
-                    <p>Dirección: <?php echo $datosCliente["direccion_domicilio"]?></p>
-                </div>
-
                 <div>
-                    <p style="margin-bottom: 5px;">ELIGE UN TIPO DE ENTREGA</p>
+                    <p style="margin-bottom: 5px;">SELECCIONAR TARJETA</p>
                     <div style="display: flex; flex-direction: column; gap:10px; border:solid 2px black; padding:10px 20px;">
                         <div style="display: flex; align-items:center; gap:5px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-store" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-credit-card" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M3 21l18 0" />
-                                <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4" />
-                                <path d="M5 21l0 -10.15" />
-                                <path d="M19 21l0 -10.15" />
-                                <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
+                                <path d="M3 5m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" />
+                                <path d="M3 10l18 0" />
+                                <path d="M7 15l.01 0" />
+                                <path d="M11 15l2 0" />
                             </svg>
-                            <a href="./retirotienda.php" style="background-color: white; border-radius:5px; cursor: pointer; border:2px solid black; padding:3px 10px;">Retirar en Tienda</a>
+                            <a href="./tarjetamass.php" style="background-color: white; border-radius:5px; cursor: pointer; border:2px solid black; padding:3px 10px;">Tarjeta Mass</a>
                         </div>
                         <div style="display: flex; align-items:center; gap:5px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-credit-card" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
-                                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-                                <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                                <path d="M3 5m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" />
+                                <path d="M3 10l18 0" />
+                                <path d="M7 15l.01 0" />
+                                <path d="M11 15l2 0" />
                             </svg>
-                            <a href="./entregadomicilio.php" style="background-color: white; border-radius:5px; cursor: pointer; border:2px solid black; padding:3px 10px;">Entrega a Domicilio</a>
+                            <a href="./tarjetavisa.php" style="background-color: white; border-radius:5px; cursor: pointer; border:2px solid black; padding:3px 10px;">Tarjeta Visa</a>
                         </div>
                     </div>
                 </div>
@@ -142,7 +134,7 @@
                     <p style="margin-bottom: 15px;">COSTO DE ENVÍO: x</p>
                     <p style="margin-bottom: 15px;">SUBTOTAL(*): <?php echo $_SESSION["subtotal"];?> + x</p>
                     <p style="margin-bottom: 15px;">TOTAL(*): <?php echo $_SESSION["subtotal"];?> + x</p>
-                    <a href="./pago.php" style="background-color:#bdf76c; padding:5px; border-radius:5px; cursor:pointer; border:1px solid black; text-align:center;">Ir a Pagar</a>
+                    <a href="./pago.php" style="background-color:#bdf76c; padding:5px; border-radius:5px; cursor:pointer; border:1px solid black; text-align:center;">Continuar</a>
                 </div>
             </div>
         </div>

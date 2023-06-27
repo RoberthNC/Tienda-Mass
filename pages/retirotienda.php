@@ -23,7 +23,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrega</title>
+    <title>Retiro en Tienda</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -99,7 +99,7 @@
                                 <path d="M19 21l0 -10.15" />
                                 <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
                             </svg>
-                            <a href="./retirotienda.php" style="background-color: white; border-radius:5px; cursor: pointer; border:2px solid black; padding:3px 10px;">Retirar en Tienda</a>
+                            <a href="./retirotienda.php" style="background-color:#bdf76c; border-radius:5px; cursor: pointer; border:2px solid black; padding:3px 10px;">Retirar en Tienda</a>
                         </div>
                         <div style="display: flex; align-items:center; gap:5px;">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -111,6 +111,11 @@
                             <a href="./entregadomicilio.php" style="background-color: white; border-radius:5px; cursor: pointer; border:2px solid black; padding:3px 10px;">Entrega a Domicilio</a>
                         </div>
                     </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap:5px;">
+                    <p>FECHA DE RECOJO</p>
+                    <input type="date" style="padding:5px; border-radius: 5px;">
                 </div>
             </div>
             <!-- Lado Derecho -->
@@ -154,6 +159,8 @@
             <p>¿Necesitas ayuda? Llámanos al 012037076</p>
         </div>
     </main>
+
+
     <script src="../js/index.js"></script>
 </body>
 </html>

@@ -23,7 +23,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrega</title>
+    <title>Entrega a Domicilio</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,9 +108,14 @@
                                 <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
                                 <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
                             </svg>
-                            <a href="./entregadomicilio.php" style="background-color: white; border-radius:5px; cursor: pointer; border:2px solid black; padding:3px 10px;">Entrega a Domicilio</a>
+                            <a href="./entregadomicilio.php" style="background-color:#bdf76c; border-radius:5px; cursor: pointer; border:2px solid black; padding:3px 10px;">Entrega a Domicilio</a>
                         </div>
                     </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap:5px;">
+                    <p>FECHA DE ENVÍO</p>
+                    <input type="date" style="padding:5px; border-radius: 5px;">
                 </div>
             </div>
             <!-- Lado Derecho -->
@@ -154,6 +159,8 @@
             <p>¿Necesitas ayuda? Llámanos al 012037076</p>
         </div>
     </main>
+
+
     <script src="../js/index.js"></script>
 </body>
 </html>
