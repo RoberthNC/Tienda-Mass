@@ -18,7 +18,5 @@ const mostrarModalEliminarCategoria = (id) => {
         })
         modalEliminarCategoria.classList.add("ocultar-modal")
         window.location.href = "./listarcategorias.php"
-        console.log(id)
-        console.log("Pasando a la otra página")
     })
 }

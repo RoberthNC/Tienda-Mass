@@ -11,7 +11,7 @@ const mostrarModalEliminarCliente = (id) => {
 
     botonEliminar.addEventListener("click",async()=>{
         const data2 = new FormData()
-        data2.append("idClienteEliminar",id)
+        data2.append("id",id)
         const resultados = await fetch("../pages/eliminarcliente.php",{
             method:"POST",
             body:data2

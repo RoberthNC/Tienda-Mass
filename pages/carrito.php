@@ -27,12 +27,11 @@
     //Limpiar los null
     $_SESSION["arregloIdProductos"] = array_filter($_SESSION["arregloIdProductos"],fn($id)=>$id!==null);
     //Cantidad de elementos en el carrito
-    $cantidadCarrito = count($_SESSION["arregloIdProductos"]);
+    $_SESSION["cantidadCarrito"] = count($_SESSION["arregloIdProductos"]);
     //Subtotal
-    $subtotal = 0;
+    $_SESSION["subtotal"] = 0;
     //IGV
-    $igv = 0;
-
+    $_SESSION["igv"] = 0;
 ?>
 
 <!DOCTYPE html>
@@ -94,7 +93,7 @@
 
     <main class="main">
         <?php
-            if($cantidadCarrito == 0){
+            if($_SESSION["cantidadCarrito"] == 0){
         ?>
             <div class="seccion-carrito">
                 <div class="contenedor-carrito">
@@ -125,7 +124,7 @@
                                 $queryProductoActual = "SELECT * FROM producto WHERE id_producto='$idProductoActual'";
                                 $resultadosProductoActual = mysqli_query($conn, $queryProductoActual);
                                 $datosProductoActual = mysqli_fetch_assoc($resultadosProductoActual);
-                                $subtotal += (float)$datosProductoActual["precio_venta"];
+                                $_SESSION["subtotal"] += (float)$datosProductoActual["precio_venta"];
                         ?>
                             <!-- Este div es el que se va a generar por la bd -->
                             <div class="contenido-producto">
@@ -134,7 +133,11 @@
                                     <p><?php echo $datosProductoActual['nombre'];?></p>
                                     <p><?php echo $datosProductoActual['nombre'];?></p>
                                     <p>Precio: <?php echo $datosProductoActual['precio_venta'];?></p>
-                                    <button>Eliminar</button>
+                                    <div style="display:flex; gap:5px; align-items:center;">
+                                        <p>Cantidad: </p> 
+                                        <input type="number" value="1" min="1" max="<?php echo $datosProductoActual['stock'];?>" style="width:45px;">
+                                    </div>
+                                    <button style="background-color:rgb(255,0,0,0.7); color:white; border-radius:5px; cursor:pointer;">Eliminar</button>
                                 </div>
                             </div>
                         <?php
@@ -145,13 +148,13 @@
                 <div class="bloque-resumen">
                     <h3>RESUMEN DE LA ORDEN</h3>
                     <div class="bloque-resumen_resumen">
-                        <p>PRODUCTOS: (<?php echo $cantidadCarrito;?>)</p>
-                        <p>SUBTOTAL: S/. <?php echo $subtotal;?></p>
+                        <p>PRODUCTOS: (<?php echo $_SESSION["cantidadCarrito"];?>)</p>
+                        <p>SUBTOTAL: S/. <?php echo $_SESSION["subtotal"];?></p>
                         <?php
-                            $igv = $subtotal * 0.18;
+                            $_SESSION["igv"] = $_SESSION["subtotal"] * 0.18;
                         ?>
-                        <p>IGV: S/. <?php echo $igv;?></p>
-                        <button>Continuar Compra</button>
+                        <p>IGV: S/. <?php echo $_SESSION["igv"];?></p>
+                        <button id="continuar_compra" style="background-color:#bdf76c; padding:5px; border-radius:5px; cursor:pointer;">Continuar Compra</button>
                     </div>
                 </div>
             </div>

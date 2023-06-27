@@ -11,3 +11,8 @@ const agregarId = async(id) => {
         console.log(error)
     }
 }
+
+document.getElementById("continuar_compra")
+    .addEventListener("click",()=>{
+        window.location.href = "../pages/entrega.php"
+    })
