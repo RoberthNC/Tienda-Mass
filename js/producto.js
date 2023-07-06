@@ -10,11 +10,11 @@ const mostrarModalEliminarProducto = (id) => {
     })
 
     botonEliminar.addEventListener("click",async()=>{
-        const data = new FormData()
-        data.append("idProductoEliminar",id)
-        const resultados = await fetch("../pages/eliminarcliente.php",{
+        const data3 = new FormData()
+        data3.append("idProductoEliminar",id)
+        const resultados = await fetch("../pages/eliminarproducto.php",{
             method:"POST",
-            body:data
+            body:data3
         })
         modalEliminarProducto.classList.add("ocultar-modal")
         window.location.href = "./listarproductos.php"
