@@ -105,7 +105,7 @@
                     </div>
 
                     <div style="margin-top:10px;">
-                        <p style="margin-bottom: 5px; font-weight: bold;">TUS DATOS DE PAGO</p>
+                        <p style="margin-bottom: 5px; font-weight: bold;">TUS DATOS DE PAGO: <span style="font-weight: bold;">Tarjeta Visa</span></p>
                         <form method="POST" style="border:2px solid black; padding:10px 20px; display:flex; flex-direction: column; row-gap:10px;">
                             <div style="display: flex; flex-direction: column; row-gap:5px;">
                                 <label for="titular">Titular de la tarjeta</label>
