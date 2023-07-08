@@ -111,7 +111,7 @@
                 <button>Iniciar Sesión</button>
     
                 <div>
-                    <a href="">¿Has olvidado la contraseña?</a>
+                    <a href="./restablecerpassword.php">¿Has olvidado la contraseña?</a>
                 </div>
     
                 <div class="registro">

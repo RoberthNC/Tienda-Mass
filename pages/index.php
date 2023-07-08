@@ -1,6 +1,7 @@
 <?php
 
     session_start();
+    error_reporting(0);
 
     require "../config/conexion.php";
     require "../config/debuguear.php";
@@ -39,7 +40,7 @@
                 <a href="./nosotros.php" class="letra-azul">Nosotros</a>
             </div>
             <div class="block">
-                <a href="#" class="letra-azul">
+                <a href="./login.php" class="letra-azul">
                     <span class="icon-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#25318C" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

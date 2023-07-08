@@ -1,15 +1,28 @@
+<?php
+
+    session_start();
+    error_reporting(0);
+
+    if($_SERVER["REQUEST_METHOD"] === "POST"){
+        $_SESSION["correoNuevoPassword"] = $_POST["correo"];
+
+        header("Location: ./nuevopassword.php");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Código - Restablecer Contraseña</title>
+    <title>Restablecer Contraseña</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/restablecerpassword.css">
+    <link rel="stylesheet" href="../css/restablecercodigo.css">
 </head>
 <body>
     <header class="header">
@@ -51,17 +64,16 @@
 
     <div class="contenedor-main">
         <main class="main">
-            <h2>Restablecer Contraseña</h2>
-            <p>Enviamos las instrucciones junto con un código
-                verificador al correo ******@gmail.com
-                Llegará en unos minutos. Revisa los pasos para poder
-                cambiar tu contraseña.</p>
-            <form class="formulario">
+            <h2>Recuperar Contraseña</h2>
+            <p>Ingresa tu correo electrónico y sigue las
+                instrucciones para una generar nueva contraseña.
+            </p>
+            <form method="post" class="formulario">
                 <div class="contenedor-campos">
-                    <label for="codigo">Código:</label>
-                    <input id="codigo" type="text" placeholder="Ingrese Código" required maxlength="6">
+                    <label for="correo">Correo Electrónico:</label>
+                    <input id="correo" name="correo" type="email" placeholder="Ingrese su correo electrónico" required>
                 </div>
-                <button>Continuar</button>
+                <button type="submit">Continuar</button>
             </form>
         </main>
     </div>

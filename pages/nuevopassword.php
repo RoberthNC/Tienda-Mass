@@ -1,3 +1,43 @@
+<?php
+
+    session_start();
+    error_reporting(0);
+
+    require "../config/conexion.php";
+    require "../config/debuguear.php";
+
+    $conn = conexionBD();
+
+    $correo = $_SESSION["correoNuevoPassword"];
+    //Buscamos el id del cliente (tmb usuario) para actualizar (AUNQUE NO ES NECESARIO XD)
+    $queryClienteActualizar = "SELECT * FROM cliente WHERE email='$correo'";
+    $resultadosClienteActualizar = mysqli_query($conn, $queryClienteActualizar);
+    $datosClienteActualizar = mysqli_fetch_assoc($resultadosClienteActualizar);
+    $id = $datosClienteActualizar["id_cliente"];
+
+    if($_SERVER["REQUEST_METHOD"] === "POST"){
+        $nuevoPassword = $_POST["nuevopassword"];
+        $repetirPassword = $_POST["repetirpassword"];
+        //Validamos que ambos campos tengan el mismo valor
+        if($nuevoPassword === $repetirPassword){
+            //Actualizamos la contraseña usando el id
+            $queryActualizarUsuario = "UPDATE usuario SET contra='$nuevoPassword' WHERE id_cliente='$id'";
+            $resultadoActualizarUsuario = mysqli_query($conn, $queryActualizarUsuario);
+            
+            $queryActulizarCliente = "UPDATE cliente SET password='$nuevoPassword' WHERE id_cliente='$id'";
+            $resultadoActualizarCliente = mysqli_query($conn, $queryActulizarCliente);
+            
+            if($resultadoActualizarUsuario && $resultadoActualizarCliente){
+                header("Location: ./login.php");
+            }
+        }
+        else{
+            header("Location: ./nuevopassword.php");
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,20 +92,20 @@
     <div class="contenedor-main">
         <main class="main">
             <h2>Restablecer Contraseña</h2>
-            <form class="formulario">
+            <form method="post" class="formulario">
                 <div class="contenedor-campos">
                     <p>Correo Electrónico</p>
                     <p>********@gmail.com</p>
                 </div>
                 <div class="contenedor-campos">
                     <label for="nuevopassword">Ingrese Nueva Contraseña:</label>
-                    <input id="nuevopassword" type="password" placeholder="Ingrese su nueva contraseña" required>
+                    <input id="nuevopassword" name="nuevopassword" type="password" placeholder="Ingrese su nueva contraseña" required>
                 </div>
                 <div class="contenedor-campos">
-                    <label for="restablecerpassword">Repita la Contraseña</label>
-                    <input id="restablecerpassword" type="password" placeholder="Repita su nueva contraseña" required>
+                    <label for="repetirpassword">Repita la Contraseña</label>
+                    <input id="repetirpassword" name="repetirpassword" type="password" placeholder="Repita su nueva contraseña" required>
                 </div>
-                <button>Restablecer</button>
+                <button type="submit">Restablecer</button>
             </form>
         </main>
     </div>
