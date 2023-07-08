@@ -100,7 +100,7 @@
     <div class="contenedor-productos">
         <?php
 
-            $queryProductos = "SELECT * FROM producto";
+            $queryProductos = "SELECT * FROM producto WHERE stock<5";
             $resultadosProductos = mysqli_query($conn, $queryProductos);
 
             while($row=mysqli_fetch_assoc($resultadosProductos)){
