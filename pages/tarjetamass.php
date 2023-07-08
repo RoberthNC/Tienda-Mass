@@ -80,7 +80,7 @@
             <!-- Lado Izquierdo -->
             <div style="display: flex; flex-direction: column; gap:50px;">
                 <div>
-                    <p style="margin-bottom: 5px;">SELECCIONAR TARJETA</p>
+                    <p style="margin-bottom: 5px; font-weight: bold;">SELECCIONAR TARJETA</p>
                     <div style="display: flex; flex-direction: column; gap:10px; border:solid 2px black; padding:10px 20px;">
                         <div style="display: flex; align-items:center; gap:5px;">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-credit-card" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -102,6 +102,38 @@
                             </svg>
                             <a href="./tarjetavisa.php" style="background-color: white; border-radius:5px; cursor: pointer; border:2px solid black; padding:3px 10px;">Tarjeta Visa</a>
                         </div>
+                    </div>
+
+                    <div style="margin-top:10px;">
+                        <p style="margin-bottom: 5px; font-weight: bold;">TUS DATOS DE PAGO</p>
+                        <form method="POST" style="border:2px solid black; padding:10px 20px; display:flex; flex-direction: column; row-gap:10px;">
+                            <div style="display: flex; flex-direction: column; row-gap:5px;">
+                                <label for="titular">Titular de la tarjeta</label>
+                                <input type="text" placeholder="Ej. Rodolfo Rivera" required style="border-radius: 5px; padding:5px;">
+                            </div>
+                            <div style="display: flex; flex-direction: column; row-gap:5px;">
+                                <label for="titular">Número de la tarjeta</label>
+                                <input type="number" placeholder="XXXX XXXX XXXX XXXX" max="16" required style="border-radius: 5px; padding:5px;">
+                            </div>
+
+                            <div style="display: flex; column-gap: 10px;">
+                                <div style="display: flex; flex-direction: column; row-gap:5px;">
+                                    <label for="mes_vencimiento">Mes de vencimiento</label>
+                                    <input type="number" maxlength="2" placeholder="MM" required style="border-radius: 5px; padding:5px;">
+                                </div>
+                                <div style="display: flex; flex-direction: column; row-gap:5px;">
+                                    <label for="anio_vencimiento">Año de vencimiento</label>
+                                    <input type="number" maxlength="4" placeholder="YYYY" required style="border-radius: 5px; padding:5px;">
+                                </div>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; row-gap:5px;">
+                                <label for="cvv">CVV</label>
+                                <input type="number" maxlength="3" placeholder="Ej. 123" required style="border-radius: 5px; padding:5px;">
+                            </div>
+
+                            <button type="submit" style="border-radius: 5px; padding:5px;">Pagar ahora</button>
+                        </form>
                     </div>
                 </div>
             </div>
