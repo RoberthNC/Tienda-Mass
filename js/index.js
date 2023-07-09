@@ -17,9 +17,13 @@ const fuenteRegular = () => {
     const arregloH2 = document.querySelectorAll("h2");
 
     arregloP.forEach(p => {
+        p.classList.remove("fuente-mediana");
+        p.classList.remove("fuente-grande");
         p.classList.add("fuente-pequenia");
     });
     arregloH2.forEach(p => {
+        p.classList.remove("fuente-mediana");
+        p.classList.remove("fuente-grande");
         p.classList.add("fuente-pequenia");
     });
 }
@@ -29,9 +33,13 @@ const fuenteMediana = () => {
     const arregloH2 = document.querySelectorAll("h2");
 
     arregloP.forEach(p => {
+        p.classList.remove("fuente-pequenia");
+        p.classList.remove("fuente-grande");
         p.classList.add("fuente-mediana");
     });
     arregloH2.forEach(p => {
+        p.classList.remove("fuente-pequenia");
+        p.classList.remove("fuente-grande");
         p.classList.add("fuente-mediana");
     });
 }
@@ -41,9 +49,13 @@ const fuenteGrande = () => {
     const arregloH2 = document.querySelectorAll("h2");
 
     arregloP.forEach(p => {
+        p.classList.remove("fuente-mediana");
+        p.classList.remove("fuente-pequenia");
         p.classList.add("fuente-grande");
     });
     arregloH2.forEach(p => {
+        p.classList.remove("fuente-mediana");
+        p.classList.remove("fuente-pequenia");
         p.classList.add("fuente-grande");
     });
 }
