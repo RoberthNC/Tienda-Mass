@@ -93,6 +93,15 @@
         <img class="img-portada" src="../img/portada.webp" alt="Imagen portada">
     </div>
 
+    <div style="display:flex; flex-direction: column; margin-top: 3rem; align-items: flex-end; justify-content: center; width:88.5%; row-gap:10px;">
+        <h2 style="font-size: 16px;">Accesibilidad</h2>
+        <div>
+            <button style="background-color: white; border:none; font-weight: bold; font-size:18px;cursor:pointer;" onclick="fuenteRegular()">A</button>
+            <button style="background-color: white; border:none; font-weight: bold; font-size:21px;cursor:pointer;" onclick="fuenteMediana()">A</button>
+            <button style="background-color: white; border:none; font-weight: bold; font-size:24px;cursor:pointer;" onclick="fuenteGrande()">A</button>
+        </div>
+    </div>
+
     <div class="contenedor-oferta">
         <p>-- Productos en Oferta --</p>
     </div>

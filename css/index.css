@@ -147,3 +147,15 @@ h1,h2,h3,p{
     justify-content: space-between;
     align-items: center;
 }
+
+.fuente-grande{
+    font-size: 24px !important;
+}
+
+.fuente-mediana{
+    font-size: 21px !important;
+}
+
+.fuente-pequenia{
+    font-size: 18px !important;
+}
