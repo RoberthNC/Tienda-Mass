@@ -3,6 +3,8 @@
     session_start();
     error_reporting(0);
 
+    $_SESSION["idTipoEntrega"] = 2;
+
     require "../config/conexion.php";
     require "../config/debuguear.php";
 
@@ -34,7 +36,9 @@
     <header class="header">
         <div class="logo">
             <h1>
-                <i class="letra-azul">Mass</i>
+                <a href="./index.php">
+                    <i class="letra-azul">Mass</i>
+                </a>
             </h1>
         </div>
         <nav class="navegacion">

@@ -30,12 +30,14 @@
     <header class="header">
         <div class="logo">
             <h1>
-                <i class="letra-azul">Mass</i>
+                <a href="./index.php">
+                    <i class="letra-azul">Mass</i>
+                </a>
             </h1>
         </div>
         <nav class="navegacion">
             <div class="block">
-                <a href="" class="letra-azul">Catálogo</a>
+                <a href="./catalogo.php" class="letra-azul">Catálogo</a>
                 <a href="./contacto.php" class="letra-azul">Contáctanos</a>
                 <a href="./nosotros.php" class="letra-azul">Nosotros</a>
             </div>

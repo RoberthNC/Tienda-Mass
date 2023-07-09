@@ -8,32 +8,17 @@
 
     $conn = conexionBD();
 
-    $correo = $_SESSION["correoNuevoPassword"];
-    //Buscamos el id del cliente (tmb usuario) para actualizar (AUNQUE NO ES NECESARIO XD)
-    $queryClienteActualizar = "SELECT * FROM cliente WHERE email='$correo'";
-    $resultadosClienteActualizar = mysqli_query($conn, $queryClienteActualizar);
-    $datosClienteActualizar = mysqli_fetch_assoc($resultadosClienteActualizar);
-    $id = $datosClienteActualizar["id_cliente"];
+    $id = $_SESSION["id"];
+    $nombre = $_SESSION["nombre"];
+
+    $resultadosCategorias =  mysqli_query($conn, "SELECT * FROM categoria");
+    $resultadosCategorias2 =  mysqli_query($conn, "SELECT * FROM categoria");
+
+    $todasLasCategorias = mysqli_query($conn,"SELECT DISTINCT c.nombre as cat, sc.nombre as subcat, t.nombre as tipoprod FROM categoria as c INNER JOIN subcategoria as sc ON c.id_categoria = sc.id_categoria INNER JOIN tipo_producto as t ON sc.id_subcategoria = t.id_subcategoria");
 
     if($_SERVER["REQUEST_METHOD"] === "POST"){
-        $nuevoPassword = $_POST["nuevopassword"];
-        $repetirPassword = $_POST["repetirpassword"];
-        //Validamos que ambos campos tengan el mismo valor
-        if($nuevoPassword === $repetirPassword){
-            //Actualizamos la contraseña usando el id
-            $queryActualizarUsuario = "UPDATE usuario SET contra='$nuevoPassword' WHERE id_cliente='$id'";
-            $resultadoActualizarUsuario = mysqli_query($conn, $queryActualizarUsuario);
-            
-            $queryActulizarCliente = "UPDATE cliente SET password='$nuevoPassword' WHERE id_cliente='$id'";
-            $resultadoActualizarCliente = mysqli_query($conn, $queryActulizarCliente);
-            
-            if($resultadoActualizarUsuario && $resultadoActualizarCliente){
-                header("Location: ./login.php");
-            }
-        }
-        else{
-            header("Location: ./nuevopassword.php");
-        }
+        $categoria = $_POST["filtro"];
+        header("Location: ./catalogo.php");
     }
 
 ?>
@@ -42,14 +27,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo Password</title>
+    <title>Catálogo</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/nuevopassword.css">
+    <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
     <header class="header">
@@ -62,7 +46,7 @@
         </div>
         <nav class="navegacion">
             <div class="block">
-                <a href="" class="letra-azul">Catálogo</a>
+                <a href="./catalogo.php" class="letra-azul">Catálogo</a>
                 <a href="./contacto.php" class="letra-azul">Contáctanos</a>
                 <a href="./nosotros.php" class="letra-azul">Nosotros</a>
             </div>
@@ -74,9 +58,33 @@
                             <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
                             <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                         </svg>
+                        <p>
+                            <?php
+                                echo $nombre;
+                            ?>
+                        </p>
                     </span>
                 </a>
-                <a href="" class="letra-azul">
+                <?php
+                    if($_SESSION["iniciadaSesion"]){
+                ?>
+                    <a href="./login.php" class="letra-azul">
+                        <span class="icon-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout-2" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#25318C" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M10 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
+                                <path d="M15 12h-12l3 -3" />
+                                <path d="M6 15l-3 -3" />
+                            </svg>
+                            <p>
+                                Cerrar Sesión
+                            </p>
+                        </span>
+                    </a>
+                <?php
+                    }
+                ?>
+                <a href="./carrito.php" class="letra-azul">
                     <span class="icon-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#25318C" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -85,31 +93,55 @@
                             <path d="M17 17h-11v-14h-2" />
                             <path d="M6 5l14 1l-1 7h-13" />
                         </svg>
+                        <p>Carrito</p>
                     </span>
                 </a>
             </div>
         </nav>
     </header>
 
-    <div class="contenedor-main">
-        <main class="main">
-            <h2>Restablecer Contraseña</h2>
-            <form method="post" class="formulario">
-                <div class="contenedor-campos">
-                    <p>Correo Electrónico</p>
-                    <p>********@gmail.com</p>
-                </div>
-                <div class="contenedor-campos">
-                    <label for="nuevopassword">Ingrese Nueva Contraseña:</label>
-                    <input id="nuevopassword" name="nuevopassword" type="password" placeholder="Ingrese su nueva contraseña" required>
-                </div>
-                <div class="contenedor-campos">
-                    <label for="repetirpassword">Repita la Contraseña</label>
-                    <input id="repetirpassword" name="repetirpassword" type="password" placeholder="Repita su nueva contraseña" required>
-                </div>
-                <button type="submit">Restablecer</button>
-            </form>
-        </main>
+    <div class="contenedor-img">
+        <img class="img-portada" src="../img/portada.webp" alt="Imagen portada">
+    </div>
+
+    <div style="display:flex; flex-direction: column; margin-top: 3rem; align-items: flex-end; justify-content: center; width:88.5%; row-gap:10px;">
+        <h2 style="font-size: 16px;">Accesibilidad</h2>
+        <div>
+            <button style="background-color: white; border:none; font-weight: bold; font-size:18px;cursor:pointer;" onclick="fuenteRegular()">A</button>
+            <button style="background-color: white; border:none; font-weight: bold; font-size:21px;cursor:pointer;" onclick="fuenteMediana()">A</button>
+            <button style="background-color: white; border:none; font-weight: bold; font-size:24px;cursor:pointer;" onclick="fuenteGrande()">A</button>
+        </div>
+    </div>
+
+    <!-- Código aquí -->
+    <div style="padding:1.5rem 3rem; display:flex; flex-direction: column; row-gap:1rem">
+        <p style="font-weight: bold;">FILTRAR</p>
+        <form method="post">
+            <select name="filtro" style="padding:5px; border-radius: 5px;">
+                <option value="">-- Lista de Categorías --</option>
+                <?php
+                    while($row=mysqli_fetch_assoc($resultadosCategorias)){
+                ?>
+                    <option value="<?php echo $row['id_categoria'];?>"><?php echo $row['nombre'];?></option>
+                <?php
+                    }
+                ?>
+            </select>
+            <button type="submit" style="padding:5px; border-radius: 5px; border:1px solid black;">Buscar</button>
+        </form>
+    </div>
+
+    <div style="padding:1.5rem 3rem; display:flex; flex-direction: column; row-gap:2rem;">
+        
+        <?php
+            while($row2 = mysqli_fetch_assoc($resultadosCategorias2)){
+        ?>
+            <div style="border: 1px solid black; padding:2rem;">
+                <h2><?php echo $row2["nombre"];?></h2>
+            </div>
+        <?php
+            }
+        ?>
     </div>
 
     <footer class="footer">
@@ -152,5 +184,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="../js/index.js"></script>
 </body>
 </html>

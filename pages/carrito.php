@@ -51,7 +51,9 @@
     <header class="header">
         <div class="logo">
             <h1>
-                <i class="letra-azul">Mass</i>
+                <a href="./index.php">
+                    <i class="letra-azul">Mass</i>
+                </a>
             </h1>
         </div>
         <nav class="navegacion">
@@ -154,7 +156,7 @@
                             $_SESSION["igv"] = $_SESSION["subtotal"] * 0.18;
                         ?>
                         <p>IGV: S/. <?php echo $_SESSION["igv"];?></p>
-                        <button id="continuar_compra" style="background-color:#bdf76c; padding:5px; border-radius:5px; cursor:pointer;">Continuar Compra</button>
+                        <a href="./entrega.php" style="background-color:#bdf76c; padding:5px; border-radius:5px; cursor:pointer; text-align:center; border:1px solid black;">Continuar Compra</a>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,8 @@
     session_start();
     error_reporting(0);
 
+    $_SESSION["idFormaPago"] = 2;
+
     require "../config/conexion.php";
     require "../config/debuguear.php";
 
@@ -15,6 +17,28 @@
     $datosCliente = mysqli_fetch_assoc($resultadosCliente);
 
     $nombre = $_SESSION["nombre"];
+
+    if($_SERVER["REQUEST_METHOD"]==="POST"){
+        $monto = $_SESSION["subtotal"];
+        $monto_igv = $_SESSION["igv"];
+        $id_cliente = $_SESSION["id"];
+        $id_forma_pago = $_SESSION["idFormaPago"];
+        $id_tipo_entrega = $_SESSION["idTipoEntrega"];
+        $fecha_compra = date("Y-m-d");
+        $queryPedido = "INSERT INTO pedido(estado,monto,monto_igv,id_cliente,id_forma_pago,id_tipo_entrega,fecha_compra)VALUES('CO','$monto','$monto_igv','$id_cliente','$id_forma_pago','$id_tipo_entrega','$fecha_compra')";
+
+        //Ejecutamos el query
+        $resultadosPagoPedido = mysqli_query($conn,$queryPedido);
+
+        if($resultadosPagoPedido){
+            //Reiniciamos los valores
+            $_SESSION["arregloIdProductos"] = [];
+            $_SESSION["subtotal"] = 0;
+            $_SESSION["igv"] = 0;
+
+            header("Location: ./index.php");
+        }
+    }
 
 ?>
 <!DOCTYPE html>
@@ -34,7 +58,9 @@
     <header class="header">
         <div class="logo">
             <h1>
-                <i class="letra-azul">Mass</i>
+                <a href="./index.php">
+                    <i class="letra-azul">Mass</i>
+                </a>
             </h1>
         </div>
         <nav class="navegacion">
@@ -109,30 +135,30 @@
                         <form method="POST" style="border:2px solid black; padding:10px 20px; display:flex; flex-direction: column; row-gap:10px;">
                             <div style="display: flex; flex-direction: column; row-gap:5px;">
                                 <label for="titular">Titular de la tarjeta</label>
-                                <input type="text" placeholder="Ej. Rodolfo Rivera" required style="border-radius: 5px; padding:5px;">
+                                <input type="text" name="titular" placeholder="Ej. Rodolfo Rivera" required style="border-radius: 5px; padding:5px;">
                             </div>
                             <div style="display: flex; flex-direction: column; row-gap:5px;">
-                                <label for="titular">Número de la tarjeta</label>
-                                <input type="number" placeholder="XXXX XXXX XXXX XXXX" max="16" required style="border-radius: 5px; padding:5px;">
+                                <label for="tarjeta">Número de la tarjeta</label>
+                                <input type="number" name="tarjeta" placeholder="XXXX XXXX XXXX XXXX" maxlength="16" required style="border-radius: 5px; padding:5px;">
                             </div>
 
                             <div style="display: flex; column-gap: 10px;">
                                 <div style="display: flex; flex-direction: column; row-gap:5px;">
                                     <label for="mes_vencimiento">Mes de vencimiento</label>
-                                    <input type="number" maxlength="2" placeholder="MM" required style="border-radius: 5px; padding:5px;">
+                                    <input type="number" name="mes" maxlength="2" placeholder="MM" required style="border-radius: 5px; padding:5px;">
                                 </div>
                                 <div style="display: flex; flex-direction: column; row-gap:5px;">
                                     <label for="anio_vencimiento">Año de vencimiento</label>
-                                    <input type="number" maxlength="4" placeholder="YYYY" required style="border-radius: 5px; padding:5px;">
+                                    <input type="number" name="anio" maxlength="4" placeholder="YYYY" required style="border-radius: 5px; padding:5px;">
                                 </div>
                             </div>
 
                             <div style="display: flex; flex-direction: column; row-gap:5px;">
                                 <label for="cvv">CVV</label>
-                                <input type="number" maxlength="3" placeholder="Ej. 123" required style="border-radius: 5px; padding:5px;">
+                                <input type="number" name="cvv" maxlength="3" placeholder="Ej. 123" required style="border-radius: 5px; padding:5px;">
                             </div>
 
-                            <button type="submit" style="border-radius: 5px; padding:5px;">Pagar ahora</button>
+                            <input type="submit" style="border-radius: 5px; padding:5px;" value="Pagar Ahora">
                         </form>
                     </div>
                 </div>
@@ -166,7 +192,6 @@
                     <p style="margin-bottom: 15px;">COSTO DE ENVÍO: x</p>
                     <p style="margin-bottom: 15px;">SUBTOTAL(*): <?php echo $_SESSION["subtotal"];?> + x</p>
                     <p style="margin-bottom: 15px;">TOTAL(*): <?php echo $_SESSION["subtotal"];?> + x</p>
-                    <a href="./pago.php" style="background-color:#bdf76c; padding:5px; border-radius:5px; cursor:pointer; border:1px solid black; text-align:center;">Continuar</a>
                 </div>
             </div>
         </div>

@@ -8,6 +8,9 @@
 
     $conn = conexionBD();
 
+    //Inicialmente
+    $_SESSION["idFormaPago"] = 0;
+
     $id = $_SESSION["id"];
     //Obtenemos la dirección
     $queryCliente = "SELECT * FROM cliente WHERE id_cliente='$id'";
@@ -34,7 +37,9 @@
     <header class="header">
         <div class="logo">
             <h1>
-                <i class="letra-azul">Mass</i>
+                <a href="./index.php">
+                    <i class="letra-azul">Mass</i>
+                </a>
             </h1>
         </div>
         <nav class="navegacion">
@@ -134,7 +139,6 @@
                     <p style="margin-bottom: 15px;">COSTO DE ENVÍO: x</p>
                     <p style="margin-bottom: 15px;">SUBTOTAL(*): <?php echo $_SESSION["subtotal"];?> + x</p>
                     <p style="margin-bottom: 15px;">TOTAL(*): <?php echo $_SESSION["subtotal"];?> + x</p>
-                    <a href="./pago.php" style="background-color:#bdf76c; padding:5px; border-radius:5px; cursor:pointer; border:1px solid black; text-align:center;">Continuar</a>
                 </div>
             </div>
         </div>
