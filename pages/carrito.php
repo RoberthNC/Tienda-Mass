@@ -139,7 +139,7 @@
                                         <p>Cantidad: </p> 
                                         <input type="number" value="1" min="1" max="<?php echo $datosProductoActual['stock'];?>" style="width:45px;">
                                     </div>
-                                    <button style="background-color:rgb(255,0,0,0.7); color:white; border-radius:5px; cursor:pointer;">Eliminar</button>
+                                    <button onclick="eliminarDeCarrito(<?php echo $datosProductoActual['id_producto'];?>)" style="background-color:rgb(255,0,0,0.7); color:white; border-radius:5px; cursor:pointer;">Eliminar</button>
                                 </div>
                             </div>
                         <?php

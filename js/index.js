@@ -59,3 +59,17 @@ const fuenteGrande = () => {
         p.classList.add("fuente-grande");
     });
 }
+
+const eliminarDeCarrito = async(id) => {
+    try {
+        const dataEliminar = new FormData();
+        dataEliminar.append("idEliminarProductoCarrito",id);
+        const response = await fetch("../pages/eliminarcarrito.php",{
+            method:"POST",
+            body:dataEliminar
+        });
+        window.location.href = "./carrito.php";
+    } catch (error) {
+        console.log(error.message);
+    }
+}
